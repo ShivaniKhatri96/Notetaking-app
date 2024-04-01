@@ -52,6 +52,8 @@ app.post("/api/notes", async (req, res) => {
     res.status(400).json({ message: "Error creating note", error });
   }
 });
+// Get all notes for specific user => add later...
+
 // Get all notes
 app.get("/api/notes", async (req, res) => {
   try {
@@ -61,6 +63,22 @@ app.get("/api/notes", async (req, res) => {
     res.status(500).json({ error: "Error fetching notes" });
   }
 });
+
+// Delete a note by ID
+router.delete("/api/notes/:id", async(req, res) => {
+    try{
+        const noteId = req.params.id;
+        const deletedNote = await Note.findByIdAndDelete(noteId);
+        if(!deletedNote) {
+            // status code 404 means: not found!!!
+            return res.status(404).json({error: "Note not found"});
+        }
+        res.json({message: "Note deleted successfully"});
+
+    } catch (error) {
+        res.status(500).json({ error: "Error deleting note"});
+    }
+})
 
 // Start the server
 app.listen(port, () => {
