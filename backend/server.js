@@ -21,6 +21,10 @@ mongoose
   )
   .then(() => {
     console.log("Connected to MongoDB");
+    // Start the server after connecting to MongoDB
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
   })
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
@@ -65,22 +69,16 @@ app.get("/api/notes", async (req, res) => {
 });
 
 // Delete a note by ID
-app.delete("/api/notes/:id", async(req, res) => {
-    try{
-        const noteId = req.params.id;
-        const deletedNote = await Note.findByIdAndDelete(noteId);
-        if(!deletedNote) {
-            // status code 404 means: not found!!!
-            return res.status(404).json({error: "Note not found"});
-        }
-        res.json({message: "Note deleted successfully"});
-
-    } catch (error) {
-        res.status(500).json({ error: "Error deleting note"});
+app.delete("/api/notes/:id", async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const deletedNote = await Note.findByIdAndDelete(noteId);
+    if (!deletedNote) {
+      // status code 404 means: not found!!!
+      return res.status(404).json({ error: "Note not found" });
     }
-})
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+    res.json({ message: "Note deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Error deleting note" });
+  }
 });
