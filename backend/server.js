@@ -65,7 +65,7 @@ app.get("/api/notes", async (req, res) => {
 });
 
 // Delete a note by ID
-router.delete("/api/notes/:id", async(req, res) => {
+app.delete("/api/notes/:id", async(req, res) => {
     try{
         const noteId = req.params.id;
         const deletedNote = await Note.findByIdAndDelete(noteId);
