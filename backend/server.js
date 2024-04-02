@@ -32,6 +32,28 @@ mongoose
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
   });
+  const extractToken = (authHeader) => {
+    if (authHeader && authHeader.startsWith("Bearer")) {
+        // Remove the "Bearer" prefix and return the token
+        return authHeader.substring(7);
+    } else {
+        // Handle the case where the header doesn't start with "Bearer"
+        return null;
+    }
+}
+  //Authentication middleware: to verify jwt token
+  const authenticateToken = (req, res, next) => {
+    const token = extractToken(req.headers.authorization);
+    if (!token) return res.status(401).json({ message: 'Unauthorized' });
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.status(403).json({
+            message: 'Forbidden'
+        })
+        req.user = user;
+        next();
+    })
+  }
+
 
 // Define routes
 // Create a new user
@@ -55,7 +77,9 @@ app.post('/api/login', async (req, res) => {
             return res.status(401).json({message: "Invalid username or password"});
         }
         // Generating a JWT token for a user
-        const token = jwt.sign({ username: user.username, password: user.password});
+        const payload = { username: user.username, password: user.password}
+        const token = jwt.sign(payload, SECRET_KEY);
+        console.log('login token', token)
         res.json({ token });
     } catch (error) {
         res.status(500).json({message: "Internal server error", error});
@@ -89,9 +113,10 @@ app.post("/api/notes", async (req, res) => {
 // Get all notes for specific user => add later...
 
 // Get all notes
-app.get("/api/notes", async (req, res) => {
+app.get("/api/notes", authenticateToken, async (req, res) => {
   try {
-    const notes = await Note.find();
+    console.log('user', req.user)
+    const notes = await Note.find({});
     res.json(notes);
   } catch {
     res.status(500).json({ error: "Error fetching notes" });
