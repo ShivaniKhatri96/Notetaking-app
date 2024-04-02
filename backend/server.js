@@ -46,6 +46,22 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
+// Login route to generate token
+app.post('/api/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        if( !user || !password ){
+            return res.status(401).json({message: "Invalid username or password"});
+        }
+        // Generating a JWT token for a user
+        const token = jwt.sign({ username: user.username, password: user.password});
+        res.json({ token });
+    } catch (error) {
+        res.status(500).json({message: "Internal server error", error});
+    }
+})
+
 // Get all users
 app.get("/api/users", async (req, res) => {
   try {
