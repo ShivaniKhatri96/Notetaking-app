@@ -79,7 +79,6 @@ app.post('/api/login', async (req, res) => {
         // Generating a JWT token for a user
         const payload = { username: user.username, password: user.password}
         const token = jwt.sign(payload, SECRET_KEY);
-        console.log('login token', token)
         res.json({ token });
     } catch (error) {
         res.status(500).json({message: "Internal server error", error});
@@ -115,7 +114,6 @@ app.post("/api/notes", async (req, res) => {
 // Get all notes
 app.get("/api/notes", authenticateToken, async (req, res) => {
   try {
-    console.log('user', req.user)
     const notes = await Note.find({});
     res.json(notes);
   } catch {
