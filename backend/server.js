@@ -139,6 +139,7 @@ app.get("/api/notes", async (req, res) => {
 });
 
 // Delete a note by ID
+// Only deleted if it belongs to the note owner
 app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -161,6 +162,7 @@ app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
 });
 
 // update a note by ID
+// Only updated if it belongs to the note owner
 app.put("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
