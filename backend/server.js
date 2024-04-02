@@ -118,7 +118,7 @@ app.post("/api/notes", authenticateToken, async (req, res) => {
 });
 
 // Get notes for user that's logged in
-app.get("/api/notes", authenticateToken, async (req, res) => {
+app.get("/api/usernotes", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
     const notes = await Note.find({ user: userId });
@@ -139,10 +139,12 @@ app.get("/api/notes", async (req, res) => {
 });
 
 // Delete a note by ID
-app.delete("/api/notes/:id", async (req, res) => {
+app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
+    const userId = req.user.userId;
     const noteId = req.params.id;
-    const deletedNote = await Note.findByIdAndDelete(noteId);
+    const deletedNote = await Note.findOneAndDelete({ _id: noteId, user: userId });
+    // const deletedNote = await Note.findByIdAndDelete(noteId);
     if (!deletedNote) {
       // status code 404 means: not found!!!
       return res.status(404).json({ error: "Note not found" });
