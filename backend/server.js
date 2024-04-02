@@ -45,7 +45,6 @@ app.get("/api/users", async (req, res) => {
 // Create a new note for a user
 app.post("/api/notes", async (req, res) => {
   try {
-    console.log(req.body);
     const { title, content } = req.body;
     const userId = "660aed826c6834d27ffb35d5";
     const newNote = new Note({ title, content, user: userId });
@@ -80,5 +79,25 @@ app.delete("/api/notes/:id", async (req, res) => {
     res.json({ message: "Note deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: "Error deleting note" });
+  }
+});
+
+// update a note by ID
+app.put("/api/notes/:id", async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const { title, content } = req.body;
+    // Find the note by ID and update its properties
+    const updatedNote = await Note.findByIdAndUpdate(
+      noteId,
+      { title, content },
+      { new: true } //Return the updated note
+    );
+    if (!updatedNote) {
+      return res.status(404).json({ error: "Note not found" });
+    }
+    res.json(updatedNote);
+  } catch (error) {
+    res.status(500).json({ error: "Error updating note" });
   }
 });
