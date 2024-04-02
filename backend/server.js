@@ -34,8 +34,8 @@ mongoose
 // Create a new user
 app.post("/api/users", async (req, res) => {
   try {
-    const { username } = req.body;
-    const newUser = new User({ username });
+    const { username, password } = req.body;
+    const newUser = new User({ username, password });
     await newUser.save();
     res.status(201).json(newUser);
   } catch (error) {
