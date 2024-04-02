@@ -143,10 +143,13 @@ app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
     const noteId = req.params.id;
-    //'Note': MondoDB model 
+    //'Note': MondoDB model
     // findOneAndDelete: Mongoose method to find a single document (note) based on the specified conditions and then deletes it
     // In this case, only the note owner can delete the note
-    const deletedNote = await Note.findOneAndDelete({ _id: noteId, user: userId });
+    const deletedNote = await Note.findOneAndDelete({
+      _id: noteId,
+      user: userId,
+    });
     if (!deletedNote) {
       // status code 404 means: not found!!!
       return res.status(404).json({ error: "Note not found" });
@@ -158,15 +161,17 @@ app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
 });
 
 // update a note by ID
-app.put("/api/notes/:id", async (req, res) => {
+app.put("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
+    const userId = req.user.userId;
     const noteId = req.params.id;
     const { title, content } = req.body;
-    // Find the note by ID and update its properties
-    const updatedNote = await Note.findByIdAndUpdate(
-      noteId,
+    // Updating the note if it belongs to the user (note's owner)
+    const updatedNote = await Note.findOneAndUpdate(
+      { _id: noteId, user: userId },
       { title, content },
-      { new: true } //Return the updated note
+      // this ensures that updated document is returned
+      { new: true }
     );
     if (!updatedNote) {
       return res.status(404).json({ error: "Note not found" });
