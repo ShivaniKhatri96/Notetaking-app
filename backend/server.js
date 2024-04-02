@@ -143,8 +143,9 @@ app.delete("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
     const noteId = req.params.id;
+    //'Note': MondoDB model 
+    // findOneAndDelete: Mongoose method to find a single document (note) based on the specified conditions and then deletes it
     const deletedNote = await Note.findOneAndDelete({ _id: noteId, user: userId });
-    // const deletedNote = await Note.findByIdAndDelete(noteId);
     if (!deletedNote) {
       // status code 404 means: not found!!!
       return res.status(404).json({ error: "Note not found" });
