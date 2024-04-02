@@ -98,10 +98,12 @@ app.get("/api/users", async (req, res) => {
   }
 });
 // Create a new note for a user
-app.post("/api/notes", async (req, res) => {
+app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
     const { title, content } = req.body;
-    const userId = "660aed826c6834d27ffb35d5";
+    // getting the user id from req
+    const userId = req.userId; 
+    // const userId = "660aed826c6834d27ffb35d5";
     const newNote = new Note({ title, content, user: userId });
     await newNote.save();
     res.status(201).json(newNote);
