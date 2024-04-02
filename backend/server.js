@@ -3,12 +3,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 //Body-parser is a middleware for Express.js that simplifies handling of HTTP request bodies
 const bodyParser = require("body-parser");
+const jwt = require('jsonwebtoken');
 //importing user model
 const User = require("./models/user");
 const Note = require("./models/note");
 
 const app = express();
 const port = process.env.PORT || 8000;
+// hardcoded secret key used for this project
+const SECRET_KEY = 'notetaking_app_key';
 
 // Middleware
 app.use(bodyParser.json());
