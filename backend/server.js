@@ -31,6 +31,18 @@ mongoose
   });
 
 // Define routes
+// Create a new user
+app.post("/api/users", async (req, res) => {
+  try {
+    const { username } = req.body;
+    const newUser = new User({ username });
+    await newUser.save();
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(400).json({ message: "Error creating user", error });
+  }
+});
+
 // Get all users
 app.get("/api/users", async (req, res) => {
   try {
