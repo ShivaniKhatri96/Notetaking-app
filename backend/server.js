@@ -103,9 +103,7 @@ app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
     const { title, content } = req.body;
     // getting the user ID from 'req'
-    console.log('req body', req.user)
     const userId = req.user.userId; 
-    console.log('fdsa',userId)
     const newNote = new Note({ title, content, user: userId });
     await newNote.save();
     res.status(201).json(newNote);
