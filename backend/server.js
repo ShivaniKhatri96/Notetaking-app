@@ -78,7 +78,7 @@ app.post('/api/login', async (req, res) => {
             return res.status(401).json({message: "Invalid username or password"});
         }
         // Generating a JWT token for a user
-        const payload = { username: user.username, password: user.password }
+        const payload = { username: user.username, password: user.password, userId: user._id }
         const token = jwt.sign(payload, SECRET_KEY);
         res.json({ token });
     } catch (error) {
@@ -103,7 +103,9 @@ app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
     const { title, content } = req.body;
     // getting the user ID from 'req'
-    const userId = req.userId; 
+    console.log('req body', req.user)
+    const userId = req.user.userId; 
+    console.log('fdsa',userId)
     const newNote = new Note({ title, content, user: userId });
     await newNote.save();
     res.status(201).json(newNote);
