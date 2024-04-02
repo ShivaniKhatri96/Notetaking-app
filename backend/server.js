@@ -97,6 +97,7 @@ app.get("/api/users", async (req, res) => {
     res.status(500).json({ error: "Error fetching users" });
   }
 });
+
 // Create a new note for a user
 app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
@@ -114,7 +115,7 @@ app.post("/api/notes", authenticateToken, async (req, res) => {
 // Get all notes for specific user => add later...
 
 // Get all notes
-app.get("/api/notes", authenticateToken, async (req, res) => {
+app.get("/api/notes", async (req, res) => {
   try {
     const notes = await Note.find({});
     res.json(notes);
