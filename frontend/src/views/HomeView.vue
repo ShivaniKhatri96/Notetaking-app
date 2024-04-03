@@ -1,9 +1,21 @@
 <script setup>
 import TheWelcome from '../components/TheWelcome.vue'
+import { ref, onMounted } from "vue";
+
+// const elem = ref();
+
+onMounted(() => {
+  fetch("http://localhost:8000/api/users")
+  .then(response => response.json())
+  .then(result => console.log('result', result))
+  .catch(error => console.log('error', error));
+})
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <!-- <TheWelcome /> -->
+    bla bla
+
   </main>
 </template>
