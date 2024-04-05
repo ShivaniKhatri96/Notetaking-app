@@ -5,16 +5,17 @@
 <template>
     <main class="welcome-box">
         <div class="Noteworthy-box">
-            <img alt="post-it picture" class="logo" src="@/assets/logo.png" />
-            <!-- <h1 class="title">Noteworthy</h1> -->
-            <h2 class="sub-title">Ready to embark on a note-taking journey? <br> Log in now to get started!</h2>
+            <img alt="post-it picture" class="logo-icon" src="@/assets/logo.png" />
+            <h1 class="welcome-title">Ready to embark on a note-taking journey? <br> Log in now to get started!</h1>
             <button>Log in</button>
         </div>
-        <img alt="post-it picture" class="notes" src="@/assets/notes.png" />
+        <img alt="post-it picture" class="notes-image" src="@/assets/notes.png" />
     </main>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
 .welcome-box {
     display: flex;
     flex-direction: row;
@@ -28,21 +29,21 @@
     gap: 1rem;
 }
 
-.logo {
+.logo-icon {
     width: 20rem;
 }
 
-/* .title {
-    font-weight: 700;
-    font-size: 2rem;
-} */
-
-.sub-title {
+.welcome-title {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
-.notes {
+.notes-image {
     width: 30rem;
 }
 </style>
