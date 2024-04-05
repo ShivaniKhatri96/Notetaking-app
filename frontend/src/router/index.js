@@ -13,10 +13,10 @@ const router = createRouter({
       component: isLoggedIn ? HomeView : WelcomeView,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/my-notes',
+      name: 'myNotes',
       // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
+      // this generates a separate chunk (myNotes.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/MyNotesView.vue')
     }
