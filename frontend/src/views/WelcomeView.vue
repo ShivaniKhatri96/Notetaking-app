@@ -4,12 +4,13 @@
 
 <template>
     <main class="welcome-box">
-        <img alt="post-it picture" class="notes" src="@/assets/notes.png" />
-        <div>
-            <h1>Noteworthy</h1>
-           <p>Log in to create noteworthy Notes</p>
-           <button>Log in</button>
+        <div class="Noteworthy-box">
+            <img alt="post-it picture" class="logo" src="@/assets/logo.png" />
+            <!-- <h1 class="title">Noteworthy</h1> -->
+            <h2 class="sub-title">Ready to embark on a note-taking journey? <br> Log in now to get started!</h2>
+            <button>Log in</button>
         </div>
+        <img alt="post-it picture" class="notes" src="@/assets/notes.png" />
     </main>
 </template>
 
@@ -21,9 +22,27 @@
     justify-content: center;
 }
 
+.Noteworthy-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.logo {
+    width: 20rem;
+}
+
+/* .title {
+    font-weight: 700;
+    font-size: 2rem;
+} */
+
+.sub-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
 .notes {
     width: 30rem;
-    /* width: 600px;
-    height: 600px; */
 }
 </style>
