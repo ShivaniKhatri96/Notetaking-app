@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
     <header class="navbar">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.png" width="160" height="50" />
+        <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
 
         <!-- <div class="wrapper">
       <nav>
@@ -12,13 +12,25 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
+    <div>
+        Log in
+    </div>
     </header>
 </template>
 
 <style scoped>
 .navbar {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem 0 0.4rem;
     background-color: var(--white);
-    padding: 0.4rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.logo {
+    width: 160px;
+    height: 50px;
 }
 </style>
