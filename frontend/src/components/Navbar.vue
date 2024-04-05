@@ -13,9 +13,9 @@ import { RouterLink } from 'vue-router'
       </nav>
     </div> -->
         <div>
-            Log in
+            Log in  <font-awesome-icon :icon="['fas', 'right-to-bracket']" />
         </div>
-        <font-awesome-icon :icon="['fas', 'right-to-bracket']" />
+       
     </header>
 </template>
 
