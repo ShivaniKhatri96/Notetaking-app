@@ -12,9 +12,11 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-    <div>
-        Log in
-    </div>
+        <div>
+            Log in
+        </div>
+        <!-- <FontAwesomeIcon :icon="faHouse" /> -->
+        <font-awesome-icon :icon="['fas', 'envelope']" />
     </header>
 </template>
 
