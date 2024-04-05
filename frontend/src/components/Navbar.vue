@@ -15,8 +15,7 @@ import { RouterLink } from 'vue-router'
         <div>
             Log in
         </div>
-        <!-- <FontAwesomeIcon :icon="faHouse" /> -->
-        <font-awesome-icon :icon="['fas', 'envelope']" />
+        <font-awesome-icon :icon="['fas', 'right-to-bracket']" />
     </header>
 </template>
 
