@@ -1,6 +1,9 @@
 <script setup>
 import { useStore } from '@/stores/store';
 const store = useStore();
+const handleSubmit = () => {
+    console.log('submitted')
+}
 </script>
 
 <template>
@@ -9,6 +12,11 @@ const store = useStore();
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
             <div>
                 log in
+                <form @submit.prevent="handleSubmit">
+                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="Password">
+                    <button type="submit">Log in</button>
+                </form>
             </div>
         </div>
     </div>
