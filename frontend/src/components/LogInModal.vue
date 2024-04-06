@@ -10,14 +10,12 @@ const handleSubmit = () => {
     <div class="log-in-wrapper" v-if="store.isLoginClick">
         <div class="log-in-modal">
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
-            <div>
-                log in
-                <form @submit.prevent="handleSubmit">
-                    <input type="text" placeholder="Username">
-                    <input type="text" placeholder="Password">
-                    <button type="submit">Log in</button>
-                </form>
-            </div>
+            <form @submit.prevent="handleSubmit" class="log-in-form">
+                <label>Log in</label>
+                <input type="text" placeholder="Username">
+                <input type="text" placeholder="Password">
+                <button type="submit">Log in</button>
+            </form>
         </div>
     </div>
 </template>
@@ -38,11 +36,16 @@ const handleSubmit = () => {
     left: 50%;
     background-color: var(--white);
     width: 500px;
-    height: 500px;
     z-index: 10;
 }
 
 .large-logo {
     width: 25rem;
+}
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 </style>
