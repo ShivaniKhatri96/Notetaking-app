@@ -13,7 +13,7 @@ const handleSubmit = () => {
             <form @submit.prevent="handleSubmit" class="log-in-form">
                 <label class="log-in-label">Log in</label>
                 <input type="text" placeholder="Username" class="log-in-input">
-                <input type="text" placeholder="Password" class="log-in-input">
+                <input type="password" placeholder="Password" class="log-in-input">
                 <button type="submit" class="log-in-button">Log in</button>
             </form>
         </div>
@@ -62,6 +62,7 @@ const handleSubmit = () => {
 
 .log-in-input {
     padding: 0.4rem;
+    border: solid 2px var(--gray);
     border-radius: 4px;
 }
 
