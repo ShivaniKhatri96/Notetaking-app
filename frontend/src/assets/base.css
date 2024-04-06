@@ -4,6 +4,8 @@
   --white: #ffffff;
   --black: #000000;
   --text-color: #333333;
+  --light-green-10: rgb(164, 198, 57, 0.1);
+  --light-green-20: rgb(164, 198, 57, 0.2);
 }
 
 *,

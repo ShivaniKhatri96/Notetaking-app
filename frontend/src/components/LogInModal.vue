@@ -11,10 +11,10 @@ const handleSubmit = () => {
         <div class="log-in-modal">
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
             <form @submit.prevent="handleSubmit" class="log-in-form">
-                <label>Log in</label>
-                <input type="text" placeholder="Username">
-                <input type="text" placeholder="Password">
-                <button type="submit">Log in</button>
+                <label class="log-in-label">Log in</label>
+                <input type="text" placeholder="Username" class="log-in-input">
+                <input type="text" placeholder="Password" class="log-in-input">
+                <button type="submit" class="log-in-button">Log in</button>
             </form>
         </div>
     </div>
@@ -37,6 +37,7 @@ const handleSubmit = () => {
 
 .log-in-modal {
     width: 500px;
+    padding: 2rem;
     background-color: var(--white);
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -51,5 +52,22 @@ const handleSubmit = () => {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.log-in-label {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.log-in-input {
+    padding: 0.4rem;
+    border-radius: 4px;
+}
+
+.log-in-button {
+    padding: 0.4rem;
+    border-radius: 4px;
+    background-color: red;
 }
 </style>

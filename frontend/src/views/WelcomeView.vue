@@ -70,7 +70,7 @@ const handleLoginClick = () => {
 
 .log-in-button:hover {
     cursor: pointer;
-    background-color: rgb(164, 198, 57, 0.1);
+    background-color: var(--light-green-10);
 }
 
 /* Large devices (desktops, 992px and up) */
