@@ -1,14 +1,23 @@
 <script setup>
+import LogInModal from '../components/LogInModal.vue';
+import { useStore } from '@/stores/store';
+const store = useStore();
+
+const handleLoginClick = () => {
+    //toggle
+    store.isLoginClick = !store.isLoginClick;
+}
 
 </script>
 
 <template>
+        <LogInModal />
     <main class="welcome-box">
         <img alt="post-it picture" class="notes-image" src="@/assets/notes.png" />
         <div class="Noteworthy-box">
             <img alt="logo" class="logo-icon" src="@/assets/logo.png" />
             <h1 class="welcome-title">Ready to embark on a note-taking journey? <br> Log in now to get started!</h1>
-            <button class="log-in-button">Log in</button>
+            <button class="log-in-button" @click="handleLoginClick">Log in</button>
         </div>
     </main>
 </template>
