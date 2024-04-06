@@ -14,6 +14,7 @@
 </template>
 
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
 .welcome-box {
@@ -24,12 +25,6 @@
     gap: 1.5rem;
     height: calc(100vh - 65px);
 }
-
-/* .Noteworthy-box {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-} */
 
 .Noteworthy-box {
     display: flex;
@@ -49,7 +44,6 @@
     font-variation-settings:
         "wdth" 100;
     font-weight: 600;
-    /* font-size: 1.2rem; */
     font-size: 1rem;
     text-align: center;
 }
@@ -73,8 +67,8 @@
     background-color: aqua;
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
     .welcome-box {
         display: flex;
         flex-direction: row;
@@ -84,10 +78,17 @@
         width: 20rem;
     }
 
+    .Noteworthy-box {
+        display: flex;
+        align-items: start;
+    }
+
     .logo-icon {
         width: 20rem;
     }
 
-
+    .welcome-title {
+        text-align: left;
+    }
 }
 </style>
