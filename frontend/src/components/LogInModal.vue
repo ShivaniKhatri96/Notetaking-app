@@ -22,7 +22,7 @@ const handleSubmit = () => {
 
 <style scoped>
 .log-in-background {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
 }
@@ -33,7 +33,6 @@ const handleSubmit = () => {
     padding: 1rem;
     background-color: var(--white);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 10;
 }
 
 .large-logo {
@@ -41,37 +40,8 @@ const handleSubmit = () => {
     display: block;
     margin: auto;
     width: 20rem;
-   
-}
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .log-in-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* width: 100%;
-    height: 100%; */
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(2px);
-    z-index: 0;
-}
-    .log-in-modal {
-    width: 500px;
-    height: auto;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 10;
-}
-.large-logo {
-    width: 25rem;
-}
- }
 
-
+}
 
 .log-in-form {
     display: flex;
@@ -104,5 +74,32 @@ const handleSubmit = () => {
 .log-in-button:hover {
     cursor: pointer;
     background-color: var(--light-green-80);
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .log-in-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2px);
+        z-index: 0;
+    }
+
+    .log-in-modal {
+        width: 500px;
+        height: auto;
+        padding: 2rem;
+        border-radius: 8px;
+        z-index: 10;
+    }
+
+    .large-logo {
+        width: 25rem;
+    }
 }
 </style>
