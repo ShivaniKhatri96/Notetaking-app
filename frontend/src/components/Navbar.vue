@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import LogInModal from './LogInModal.vue';
 import { useStore } from '@/stores/store';
 const store = useStore();
 
