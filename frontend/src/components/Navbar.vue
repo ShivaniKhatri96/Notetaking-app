@@ -1,5 +1,13 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import LogInModal from './LogInModal.vue';
+import { useStore } from '@/stores/store';
+const store = useStore();
+
+const handleLoginClick = () => {
+    //toggle
+    store.isLoginClick = true;
+}
 </script>
 
 <template>
@@ -12,7 +20,7 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-        <div class="login-wrapper">
+        <div class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
 

@@ -5,13 +5,12 @@ const store = useStore();
 
 const handleLoginClick = () => {
     //toggle
-    store.isLoginClick = !store.isLoginClick;
+    store.isLoginClick = true;
 }
-
 </script>
 
 <template>
-        <LogInModal />
+    <LogInModal />
     <main class="welcome-box">
         <img alt="post-it picture" class="notes-image" src="@/assets/notes.png" />
         <div class="Noteworthy-box">
