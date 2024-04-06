@@ -31,14 +31,15 @@ const handleSubmit = () => {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(2px);
     z-index: 0;
 }
 
 .log-in-modal {
-    position: fixed;
-    background-color: var(--white);
     width: 500px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     z-index: 10;
 }
 
