@@ -14,7 +14,6 @@
 </template>
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
 .welcome-box {
@@ -50,7 +49,6 @@
 
 .notes-image {
     width: 15rem;
-
 }
 
 .log-in-button {
@@ -64,7 +62,7 @@
 
 .log-in-button:hover {
     cursor: pointer;
-    background-color: aqua;
+    background-color: rgb(164, 198, 57, 0.1);
 }
 
 /* Large devices (desktops, 992px and up) */
