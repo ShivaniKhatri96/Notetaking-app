@@ -6,7 +6,10 @@ const store = useStore();
 <template>
     <div class="log-in-wrapper" v-if="store.isLoginClick">
         <div class="log-in-modal">
-            log in
+            <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
+            <div>
+                log in
+            </div>
         </div>
     </div>
 </template>
@@ -17,17 +20,21 @@ const store = useStore();
     background-color: rgba(0, 0, 0, 0.2);
     width: 100vw;
     height: 100vh;
-    z-index: 5;
-   /* filter: blur(2px); */
+    z-index: 0;
+    /* filter: blur(2px); */
 }
 
 .log-in-modal {
     position: fixed;
-    top: 50%;
+    top: 25%;
     left: 50%;
-    background-color: red;
-    width: 250px;
-    height: 250px;
+    background-color: var(--white);
+    width: 500px;
+    height: 500px;
     z-index: 10;
+}
+
+.large-logo {
+    width: 25rem;
 }
 </style>
