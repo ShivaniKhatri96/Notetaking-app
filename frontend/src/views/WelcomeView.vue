@@ -6,7 +6,7 @@
     <main class="welcome-box">
         <img alt="post-it picture" class="notes-image" src="@/assets/notes.png" />
         <div class="Noteworthy-box">
-            <img alt="post-it picture" class="logo-icon" src="@/assets/logo.png" />
+            <img alt="logo" class="logo-icon" src="@/assets/logo.png" />
             <h1 class="welcome-title">Ready to embark on a note-taking journey? <br> Log in now to get started!</h1>
             <button class="log-in-button">Log in</button>
         </div>
@@ -22,25 +22,24 @@
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    /* flex: 1; */
     height: calc(100vh - 65px);
 }
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .welcome-box {
-        display: flex;
-        flex-direction: row;
-    }
-}
+
+/* .Noteworthy-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+} */
 
 .Noteworthy-box {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
 }
 
 .logo-icon {
-    width: 20rem;
+    width: 15rem;
 }
 
 .welcome-title {
@@ -50,11 +49,14 @@
     font-variation-settings:
         "wdth" 100;
     font-weight: 600;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
+    font-size: 1rem;
+    text-align: center;
 }
 
 .notes-image {
-    width: 20rem;
+    width: 15rem;
+
 }
 
 .log-in-button {
@@ -69,5 +71,23 @@
 .log-in-button:hover {
     cursor: pointer;
     background-color: aqua;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .welcome-box {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .notes-image {
+        width: 20rem;
+    }
+
+    .logo-icon {
+        width: 20rem;
+    }
+
+
 }
 </style>
