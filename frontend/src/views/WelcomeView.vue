@@ -18,10 +18,19 @@
 
 .welcome-box {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
+    /* flex: 1; */
+    height: calc(100vh - 65px);
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .welcome-box {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .Noteworthy-box {
@@ -54,6 +63,7 @@
     border-radius: 8px;
     font-weight: 700;
     font-size: 1rem;
+    background-color: var(--white);
 }
 
 .log-in-button:hover {
