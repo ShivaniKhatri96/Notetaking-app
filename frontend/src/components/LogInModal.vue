@@ -68,6 +68,15 @@ const handleSubmit = () => {
 .log-in-button {
     padding: 0.4rem;
     border-radius: 4px;
-    background-color: red;
+    border: solid 2px var(--light-green);
+    background-color: var(--light-green);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.log-in-button:hover {
+    cursor: pointer;
+    background-color: var(--light-green-80);
 }
 </style>
