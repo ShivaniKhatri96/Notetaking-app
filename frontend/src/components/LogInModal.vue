@@ -7,7 +7,7 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <div class="log-in-wrapper" v-if="store.isLoginClick">
+    <div class="log-in-background" v-if="store.isLoginClick">
         <div class="log-in-modal">
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
             <form @submit.prevent="handleSubmit" class="log-in-form">
@@ -21,19 +21,22 @@ const handleSubmit = () => {
 </template>
 
 <style scoped>
-.log-in-wrapper {
-    position: absolute;
+.log-in-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
-    width: 100vw;
-    height: 100vh;
+    backdrop-filter: blur(1px);
     z-index: 0;
-    /* filter: blur(2px); */
 }
 
 .log-in-modal {
     position: fixed;
-    top: 25%;
-    left: 50%;
     background-color: var(--white);
     width: 500px;
     z-index: 10;
