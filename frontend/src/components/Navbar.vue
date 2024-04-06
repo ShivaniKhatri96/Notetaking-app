@@ -12,10 +12,10 @@ import { RouterLink } from 'vue-router'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-        <div>
-            Log in  <font-awesome-icon :icon="['fas', 'right-to-bracket']" />
+        <div class="login-wrapper">
+            <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
-       
+
     </header>
 </template>
 
@@ -33,5 +33,12 @@ import { RouterLink } from 'vue-router'
 .logo {
     width: 160px;
     height: 50px;
+}
+.login-wrapper {
+    font-weight: 600;
+    cursor: pointer;
+}
+.log-in-icon {
+    padding-right: 0.5rem;
 }
 </style>
