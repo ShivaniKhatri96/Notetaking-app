@@ -34,10 +34,16 @@ import { RouterLink } from 'vue-router'
     width: 160px;
     height: 50px;
 }
+
 .login-wrapper {
     font-weight: 600;
-    cursor: pointer;
 }
+
+.login-wrapper:hover {
+    cursor: pointer;
+    color: var(--black);
+}
+
 .log-in-icon {
     padding-right: 0.5rem;
 }
