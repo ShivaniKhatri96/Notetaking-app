@@ -59,7 +59,7 @@ const handleSubmit = async () => {
                 <label class="log-in-label">Log in</label>
                 <input type="text" placeholder="Username" class="log-in-input" v-model="user.username">
                 <input type="password" placeholder="Password" class="log-in-input" v-model="user.password">
-                <p class="error-message">{{ errorMessage }}</p>
+                <p v-if="errorMessage.length" class="error-message">{{ errorMessage }}</p>
                 <button type="submit" class="log-in-button">Log in</button>
             </form>
         </div>
