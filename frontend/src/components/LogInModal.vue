@@ -9,38 +9,34 @@ const user = ref({
     password: ''
 })
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
     const { username, password } = user.value;
-    fetch(
-        "http://localhost:8000/api/login",
-        {
-            method: "POST",
-            body: JSON.stringify({
-                username,
-                password,
-                // redirect: 'follow',
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    )
-        .then((res) => {
-            if (res.ok) {
-                console.log("Successfully logged in");
-                return res.json();
-
-            } 
-            // else {
-            //     console.log("Password or email incorrect!!");
-            // }
-        })
-        .then((data) => {
+    try {
+        const response = await fetch(
+            "http://localhost:8000/api/login",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    username,
+                    password,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        if (response.ok) {
+            console.log("Successfully logged in");
+            const data = await response.json();
             console.log('data', data);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        }
+        else {
+            console.log("Error", response.status);
+        }
+    }
+    catch (err) {
+        console.log(err);
+    };
 }
 
 </script>
