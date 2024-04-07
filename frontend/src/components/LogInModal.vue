@@ -2,7 +2,9 @@
 import { ref } from "vue";
 import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const store = useStore();
 const authStore = useAuthStore();
 
@@ -31,6 +33,7 @@ const handleSubmit = async () => {
             const data = await response.json();
             localStorage.setItem('noteworthyToken', data.token);
             authStore.login(data.token)
+            router.push('/');
             console.log("Successfully logged in");
         }
         else {
