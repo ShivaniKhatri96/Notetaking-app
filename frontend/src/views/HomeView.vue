@@ -14,7 +14,7 @@ onMounted(() => {
 <template>
   <main>
     <!-- <TheWelcome /> -->
-    bla bla
+   Home
 
   </main>
 </template>

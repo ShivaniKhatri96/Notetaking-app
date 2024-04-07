@@ -5,7 +5,6 @@ import { useAuthStore } from '@/stores/auth';
 
 const store = useStore();
 const authStore = useAuthStore();
-console.log('auth',authStore.token)
 
 const user = ref({
     username: '',
@@ -32,7 +31,6 @@ const handleSubmit = async () => {
             const data = await response.json();
             localStorage.setItem('noteworthyToken', data.token);
             authStore.login(data.token)
-            console.log('auth',authStore.token)
             console.log("Successfully logged in");
         }
         else {
