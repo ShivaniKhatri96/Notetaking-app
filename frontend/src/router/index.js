@@ -2,24 +2,27 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WelcomeView from '@/views/WelcomeView.vue'
 import { useAuthStore } from '@/stores/auth'
+import MyNotesView from '@/views/MyNotesView.vue'
 
-// temporary
-const isAuthenticated = false
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: isAuthenticated ? HomeView : WelcomeView
+      component: HomeView,
+      meta: {requiresAuth: true}, // protected route
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: WelcomeView,
+      meta: {requiresAuth: false}, // public route
     },
     {
       path: '/my-notes',
       name: 'myNotes',
-      // route level code-splitting
-      // this generates a separate chunk (myNotes.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/MyNotesView.vue'),
+      component: MyNotesView,
       meta: { requiresAuth: true } // protected route
     }
   ]
@@ -29,7 +32,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
   if (to.meta.requiresAuth && authStore.token === null) {
-    next('/')
+    next('/welcome')
   } else {
     next()
   }

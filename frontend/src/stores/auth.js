@@ -1,4 +1,3 @@
-import { faLongArrowAltUp } from '@fortawesome/free-solid-svg-icons';
 import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
