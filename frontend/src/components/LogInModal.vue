@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useStore } from '@/stores/store';
+import { useAuthStore } from '@/stores/auth';
 
 const store = useStore();
-
+const authStore = useAuthStore();
+console.log('auth',authStore.token)
 
 const user = ref({
     username: '',
@@ -28,7 +30,9 @@ const handleSubmit = async () => {
         )
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem('noteworthyToken', data);
+            localStorage.setItem('noteworthyToken', data.token);
+            authStore.login(data.token)
+            console.log('auth',authStore.token)
             console.log("Successfully logged in");
         }
         else {
