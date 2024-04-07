@@ -36,6 +36,7 @@ const handleSubmit = async () => {
             localStorage.setItem('noteworthyToken', data.token);
             authStore.login(data.token)
             errorMessage.value = "";
+            store.isLoginClick = false;
             router.push('/');
             console.log("Successfully logged in");
         }
@@ -124,6 +125,7 @@ const handleSubmit = async () => {
 
 .error-message {
     color: var(--red);
+    font-size: 0.9rem;
 }
 
 /* Medium devices (tablets, 768px and up) */
