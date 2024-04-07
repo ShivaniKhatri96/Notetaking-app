@@ -78,7 +78,7 @@ app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
     // username is unique
     const user = await User.findOne({ username });
-    if (!user || !password) {
+    if (!user || !password || user.password !== password) {
       return res.status(401).json({ message: "Invalid username or password" });
     }
     // Generating a JWT token for a user

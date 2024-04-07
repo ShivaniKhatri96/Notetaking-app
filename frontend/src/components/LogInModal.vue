@@ -10,8 +10,37 @@ const user = ref({
 })
 
 const handleSubmit = () => {
-    console.log('submitted')
-    console.log('user', user.value)
+    const { username, password } = user.value;
+    fetch(
+        "http://localhost:8000/api/login",
+        {
+            method: "POST",
+            body: JSON.stringify({
+                username,
+                password,
+                // redirect: 'follow',
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    )
+        .then((res) => {
+            if (res.ok) {
+                console.log("Successfully logged in");
+                return res.json();
+
+            } 
+            // else {
+            //     console.log("Password or email incorrect!!");
+            // }
+        })
+        .then((data) => {
+            console.log('data', data);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 }
 
 </script>
