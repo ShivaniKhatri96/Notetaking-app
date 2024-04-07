@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WelcomeView from '@/views/WelcomeView.vue'
+import { useAuthStore } from '@/stores/auth';
+
 
 // temporary
 const isAuthenticated = false;
@@ -26,7 +28,8 @@ const router = createRouter({
 
 //Navigation guard
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isAuthenticated){
+  const authStore = useAuthStore();
+  if (to.meta.requiresAuth && !authStore.isLoggedIn){
     next('/');
   }
   else {
