@@ -2,7 +2,7 @@
 const express = require("express");
 //cors: Cross-Origin Resource Sharing (CORS) using the `cors` middleware
 // It allows or restricts cross-origin HTTP requests
-const cors = require('cors');
+const cors = require("cors");
 const mongoose = require("mongoose");
 //Body-parser is a middleware for Express.js that simplifies handling of HTTP request bodies
 const bodyParser = require("body-parser");
@@ -103,6 +103,15 @@ app.get("/api/users", async (req, res) => {
     res.json(users);
   } catch {
     res.status(500).json({ error: "Error fetching users" });
+  }
+});
+
+// Get current user
+app.get("/api/me", authenticateToken, async (req, res) => {
+  try {
+    res.json(req.user);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching current user" });
   }
 });
 
