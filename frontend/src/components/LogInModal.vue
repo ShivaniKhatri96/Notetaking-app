@@ -4,6 +4,7 @@ import { useStore } from '@/stores/store';
 
 const store = useStore();
 
+
 const user = ref({
     username: '',
     password: ''
@@ -26,12 +27,12 @@ const handleSubmit = async () => {
             }
         )
         if (response.ok) {
-            console.log("Successfully logged in");
             const data = await response.json();
-            console.log('data', data);
+            localStorage.setItem('noteworthyToken', data);
+            console.log("Successfully logged in");
         }
         else {
-            console.log("Error", response.status);
+            console.log("Invalid username or password");
         }
     }
     catch (err) {
