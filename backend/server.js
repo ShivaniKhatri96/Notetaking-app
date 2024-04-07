@@ -40,8 +40,12 @@ const extractToken = (authHeader) => {
   if (authHeader && authHeader.startsWith("Bearer")) {
     // Remove the "Bearer" prefix and return the token
     return authHeader.substring(7);
-  } else {
+  } else if (authHeader.length > 0) {
     // Handle the case where the header doesn't start with "Bearer"
+    return authHeader;
+  }
+  else {
+    // Handle the case where header isn't present
     return null;
   }
 };

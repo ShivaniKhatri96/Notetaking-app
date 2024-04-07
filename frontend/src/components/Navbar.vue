@@ -21,8 +21,25 @@ const handleLogoutClick = () => {
 }
 
 //The arrow function '() => authStore.token' is evaluated every time the authStore.token property changes
-watch(() => authStore.token, () => {
+watch(() => authStore.token, async () => {
     console.log('token token')
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", authStore.token);
+    // myHeaders.append("Authorization", `Bearer ${authStore.token}`);
+    try {
+        const response = await fetch("http://localhost:8000/api/me", {
+            method: "GET",
+            headers: myHeaders,
+        });
+        if (response.ok) {
+            const data = await response.json();
+            console.log('data user',data);
+        } else {
+            console.error("Error fetching current user");
+        }
+    } catch (err) {
+        console.log(err);
+    }
 })
 
 </script>
