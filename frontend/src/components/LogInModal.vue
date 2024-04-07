@@ -1,19 +1,30 @@
 <script setup>
+import { ref } from "vue";
 import { useStore } from '@/stores/store';
+
 const store = useStore();
+
 const handleSubmit = () => {
     console.log('submitted')
+    console.log('user', user)
 }
+
+const user = ref({
+    username: '',
+    password: ''
+})
+
 </script>
 
 <template>
     <div class="log-in-background" v-if="store.isLoginClick">
         <div class="log-in-modal">
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
+            <!-- v-model simplifies the process of binding form input values to the component’s data -->
             <form @submit.prevent="handleSubmit" class="log-in-form">
                 <label class="log-in-label">Log in</label>
-                <input type="text" placeholder="Username" class="log-in-input">
-                <input type="password" placeholder="Password" class="log-in-input">
+                <input type="text" placeholder="Username" class="log-in-input" v-model="user.username">
+                <input type="password" placeholder="Password" class="log-in-input" v-model="user.password">
                 <button type="submit" class="log-in-button">Log in</button>
             </form>
         </div>

@@ -6,7 +6,6 @@ const store = useStore();
 const handleLoginClick = () => {
     //toggle
     store.isLoginClick = true;
-    console.log('fdsafjk')
 }
 </script>
 
