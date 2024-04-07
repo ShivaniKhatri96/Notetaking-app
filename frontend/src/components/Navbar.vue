@@ -1,8 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
-import { useRouter } from 'vue-router';
+import { useRouter, RouterLink } from 'vue-router';
+import { ref, watch } from 'vue';
+
 
 const router = useRouter();
 const store = useStore();
@@ -18,6 +19,12 @@ const handleLogoutClick = () => {
     authStore.logout()
     router.push('/welcome');
 }
+
+//The arrow function '() => authStore.token' is evaluated every time the authStore.token property changes
+watch(() => authStore.token, () => {
+    console.log('token token')
+})
+
 </script>
 
 <template>
