@@ -1,11 +1,22 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { useStore } from '@/stores/store';
+import { useAuthStore } from '@/stores/auth';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 const store = useStore();
+const authStore = useAuthStore();
 
 const handleLoginClick = () => {
     //toggle
     store.isLoginClick = true;
+}
+
+const handleLogoutClick = () => {
+    localStorage.removeItem('noteworthyToken');
+    authStore.logout()
+    router.push('/welcome');
 }
 </script>
 
@@ -19,8 +30,11 @@ const handleLoginClick = () => {
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-        <div class="login-wrapper" @click="handleLoginClick">
+        <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
+        </div>
+        <div v-else @click="handleLogoutClick">
+            logout
         </div>
 
     </header>
