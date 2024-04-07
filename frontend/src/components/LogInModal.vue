@@ -4,15 +4,15 @@ import { useStore } from '@/stores/store';
 
 const store = useStore();
 
-const handleSubmit = () => {
-    console.log('submitted')
-    console.log('user', user)
-}
-
 const user = ref({
     username: '',
     password: ''
 })
+
+const handleSubmit = () => {
+    console.log('submitted')
+    console.log('user', user.value)
+}
 
 </script>
 
