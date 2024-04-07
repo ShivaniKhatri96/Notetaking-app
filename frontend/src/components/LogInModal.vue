@@ -13,6 +13,8 @@ const user = ref({
     password: ''
 })
 
+const errorMessage = ref("");
+
 const handleSubmit = async () => {
     const { username, password } = user.value;
     try {
@@ -33,11 +35,12 @@ const handleSubmit = async () => {
             const data = await response.json();
             localStorage.setItem('noteworthyToken', data.token);
             authStore.login(data.token)
+            errorMessage.value = "";
             router.push('/');
             console.log("Successfully logged in");
         }
         else {
-            console.log("Invalid username or password");
+            errorMessage.value = "Invalid username or password";
         }
     }
     catch (err) {
@@ -56,6 +59,7 @@ const handleSubmit = async () => {
                 <label class="log-in-label">Log in</label>
                 <input type="text" placeholder="Username" class="log-in-input" v-model="user.username">
                 <input type="password" placeholder="Password" class="log-in-input" v-model="user.password">
+                <p class="error-message">{{ errorMessage }}</p>
                 <button type="submit" class="log-in-button">Log in</button>
             </form>
         </div>
@@ -116,6 +120,10 @@ const handleSubmit = async () => {
 .log-in-button:hover {
     cursor: pointer;
     background-color: var(--light-green-80);
+}
+
+.error-message {
+    color: var(--red);
 }
 
 /* Medium devices (tablets, 768px and up) */
