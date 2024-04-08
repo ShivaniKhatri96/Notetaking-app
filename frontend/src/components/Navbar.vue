@@ -59,10 +59,14 @@ watch(() => authStore.token, async () => {
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
-        <div v-else @click="handleLogoutClick">
-            logout
+        <div v-else>
+            <div>
+                {{ authStore.user.username }}
+            </div>
+            <div @click="handleLogoutClick">
+                logout
+            </div>
         </div>
-
     </header>
 </template>
 
