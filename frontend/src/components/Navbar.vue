@@ -53,7 +53,9 @@ const handleCurrentUser = () => {
 
 <template>
     <header class="navbar">
-        <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
+        <RouterLink to="/">
+            <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
+        </RouterLink>
 
         <!-- <div class="wrapper">
       <nav>
