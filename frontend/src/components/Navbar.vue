@@ -35,7 +35,7 @@ watch(() => authStore.token, async () => {
                 // stringifying the object to store in localStorage
                 const currentUser = JSON.stringify(data);
                 localStorage.setItem('noteworthyUser', currentUser);
-                authStore.currentUser(data);
+                authStore.setUser(data);
             } else {
                 console.log("Error fetching current user");
             }
@@ -66,13 +66,13 @@ const handleCurrentUser = () => {
         </div>
         <div v-else>
             <div @click="handleCurrentUser">
-                <font-awesome-icon :icon="['fas', 'circle-user']" /> 
+                <font-awesome-icon :icon="['fas', 'circle-user']"  /> 
                 {{ authStore.user?.username }} 
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
-            <!-- <div @click="handleLogoutClick">
+            <div @click="handleLogoutClick">
                 logout
-            </div> -->
+            </div>
         </div>
     </header>
 </template>

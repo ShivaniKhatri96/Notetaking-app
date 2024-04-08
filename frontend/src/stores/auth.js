@@ -6,15 +6,15 @@ const loggedUser = JSON.parse(loggedUserString);
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
-        token: null || localStorage.getItem('noteworthyToken'),
-        user: null || loggedUser
+        token: localStorage.getItem('noteworthyToken') || null,
+        user: loggedUser || null
     }),
     // Actions 
     actions: {
         login(token) {
             this.token = token;
         },
-        currentUser(user) {
+        setUser(user) {
             this.user = user;
         },
         logout() {
