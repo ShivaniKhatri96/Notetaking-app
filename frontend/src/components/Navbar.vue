@@ -65,14 +65,14 @@ const handleCurrentUser = () => {
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
         <div v-else>
-            <div @click="handleCurrentUser">
-                <font-awesome-icon :icon="['fas', 'circle-user']"  /> 
-                {{ authStore.user?.username }} 
+            <div @click="handleCurrentUser" class="user-nav">
+                <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
+                <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
-            <div @click="handleLogoutClick">
+            <!-- <div @click="handleLogoutClick">
                 logout
-            </div>
+            </div> -->
         </div>
     </header>
 </template>
@@ -104,5 +104,24 @@ const handleCurrentUser = () => {
 
 .log-in-icon {
     padding-right: 0.5rem;
+}
+
+.user-nav {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    padding: 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.user-nav:hover {
+    cursor: pointer;
+    background-color: var(--background-color);
+}
+
+.user-icon {
+    color: var(--pink);
+    font-size: 1.4rem;
 }
 </style>
