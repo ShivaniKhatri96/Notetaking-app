@@ -4,7 +4,6 @@ import { useAuthStore } from '@/stores/auth';
 import { useRouter, RouterLink } from 'vue-router';
 import { ref, watch } from 'vue';
 
-
 const router = useRouter();
 const store = useStore();
 const authStore = useAuthStore();
@@ -45,7 +44,11 @@ watch(() => authStore.token, async () => {
         }
     }
 })
-console.log('username',authStore?.user?.username);
+
+const handleCurrentUser = () => {
+    console.log('clicked current user');
+}
+
 </script>
 
 <template>
@@ -62,14 +65,14 @@ console.log('username',authStore?.user?.username);
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
         <div v-else>
-            <div>
+            <div @click="handleCurrentUser">
                 <font-awesome-icon :icon="['fas', 'circle-user']" /> 
                 {{ authStore.user?.username }} 
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
-            <div @click="handleLogoutClick">
+            <!-- <div @click="handleLogoutClick">
                 logout
-            </div>
+            </div> -->
         </div>
     </header>
 </template>
