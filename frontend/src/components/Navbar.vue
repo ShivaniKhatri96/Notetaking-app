@@ -62,12 +62,13 @@ const showContextMenu = (event) => {
     menuX.value = event.clientX;
     menuY.value = event.clientY;
     showMenu.value = true;
+    console.log(menuX.value, menuY.value);
 };
 
 </script>
 
 <template>
-    <ContextMenu :showMenu="showMenu">
+    <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
         <div @click="handleLogoutClick">
             logout
         </div>
@@ -83,7 +84,7 @@ const showContextMenu = (event) => {
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-    <button @contextmenu.prevent="showContextMenu">Right-click me!</button>
+    <button @click="showContextMenu">click me!</button>
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
