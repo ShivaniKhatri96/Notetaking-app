@@ -61,7 +61,8 @@ watch(() => authStore.token, async () => {
         </div>
         <div v-else>
             <div>
-                {{ authStore.user.username }}
+                <font-awesome-icon :icon="['fas', 'circle-user']" /> {{ authStore.user.username }} 
+                <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
             <div @click="handleLogoutClick">
                 logout
