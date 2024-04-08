@@ -64,18 +64,14 @@ const showContextMenu = (event) => {
     showMenu.value = !showMenu.value;
     console.log('event', event)
 };
-
+const outsideContextMenu = () => {
+    if (showMenu.value = true) {
+        showMenu.value = false;
+    }
+}
 </script>
 
 <template>
-    <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
-        <div @click="handleMyNotes" class="context-menu-item">
-            My notes
-        </div>
-        <div @click="handleLogoutClick" class="context-menu-item">
-            logout
-        </div>
-    </ContextMenu>
     <header class="navbar">
         <RouterLink to="/">
             <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
@@ -83,12 +79,20 @@ const showContextMenu = (event) => {
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
-        <div v-else>
+        <div v-else v-click-outside="outsideContextMenu">
             <div @click="showContextMenu" class="user-nav">
                 <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
                 <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
+            <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
+                <div @click="handleMyNotes" class="context-menu-item">
+                    My notes
+                </div>
+                <div @click="handleLogoutClick" class="context-menu-item">
+                    logout
+                </div>
+            </ContextMenu>
         </div>
     </header>
 </template>
