@@ -3,10 +3,15 @@ import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter, RouterLink } from 'vue-router';
 import { ref, watch } from 'vue';
+import ContextMenu from './ContextMenu.vue';
 
 const router = useRouter();
 const store = useStore();
 const authStore = useAuthStore();
+
+const showMenu = ref(false);
+const menuX = ref(0);
+const menuY = ref(0);
 
 const handleLoginClick = () => {
     //toggle
@@ -17,6 +22,7 @@ const handleLogoutClick = () => {
     localStorage.removeItem('noteworthyToken');
     localStorage.removeItem('noteworthyUser');
     authStore.logout()
+    showMenu.value = false;
     router.push('/welcome');
 }
 
@@ -45,30 +51,26 @@ watch(() => authStore.token, async () => {
     }
 })
 
-
-import ContextMenu from './ContextMenu.vue';
-
-const showMenu = ref(false);
-const menuX = ref(0);
-const menuY = ref(0);
-
-const handleCurrentUser = () => {
-    console.log('clicked current user');
-    showMenu.value = true;
+const handleMyNotes = () => {
+    showMenu.value = false;
+    router.push('/my-notes');
 }
 
 const showContextMenu = (event) => {
     event.preventDefault();
     menuX.value = event.clientX;
     menuY.value = event.clientY;
-    showMenu.value = true;
-    console.log(menuX.value, menuY.value);
+    // showMenu.value = true;
+    showMenu.value = !showMenu.value;
 };
 
 </script>
 
 <template>
     <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
+        <div @click="handleMyNotes">
+            My notes
+        </div>
         <div @click="handleLogoutClick">
             logout
         </div>
@@ -77,13 +79,6 @@ const showContextMenu = (event) => {
         <RouterLink to="/">
             <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
         </RouterLink>
-
-        <!-- <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div> -->
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
@@ -93,9 +88,6 @@ const showContextMenu = (event) => {
                 <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
-            <!-- <div @click="handleLogoutClick">
-                logout
-            </div> -->
         </div>
     </header>
 </template>
