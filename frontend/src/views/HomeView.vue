@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
-
+import NoteCreation from '../components/NoteCreation.vue';
 // const elem = ref();
 
 onMounted(() => {
@@ -13,7 +13,6 @@ onMounted(() => {
 
 <template>
   <main>
-   jkhk
-
+   <NoteCreation />
   </main>
 </template>
