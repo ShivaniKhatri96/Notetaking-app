@@ -12,7 +12,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
+  <main class="home">
    <NoteCreation />
   </main>
 </template>
+<style scoped>
+.home {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+</style>
