@@ -45,13 +45,33 @@ watch(() => authStore.token, async () => {
     }
 })
 
+
+import ContextMenu from './ContextMenu.vue';
+
+const showMenu = ref(false);
+const menuX = ref(0);
+const menuY = ref(0);
+
 const handleCurrentUser = () => {
     console.log('clicked current user');
+    showMenu.value = true;
 }
+
+const showContextMenu = (event) => {
+    event.preventDefault();
+    menuX.value = event.clientX;
+    menuY.value = event.clientY;
+    showMenu.value = true;
+};
 
 </script>
 
 <template>
+    <ContextMenu :showMenu="showMenu">
+        <div @click="handleLogoutClick">
+            logout
+        </div>
+    </ContextMenu>
     <header class="navbar">
         <RouterLink to="/">
             <img alt="Notetaking app logo" class="logo" src="@/assets/logo.png" />
@@ -63,6 +83,7 @@ const handleCurrentUser = () => {
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
+    <button @contextmenu.prevent="showContextMenu">Right-click me!</button>
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
