@@ -54,6 +54,9 @@ const loginModalRef = ref(null);
 const handleClickOutside = (e) => {
     if (store.isLoginClick && loginModalRef.value && !loginModalRef.value.contains(e.target)) {
         store.isLoginClick = false;
+        user.value.username = "";
+        user.value.password = "";
+        errorMessage.value = ""
     }
 };
 
