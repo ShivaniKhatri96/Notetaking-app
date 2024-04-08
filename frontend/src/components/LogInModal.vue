@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch, watchEffect } from 'vue';
 import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
@@ -48,12 +48,28 @@ const handleSubmit = async () => {
         console.log(err);
     };
 }
+// code to close the log in modal when clicked outside of it
+const loginModalRef = ref(null);
+
+const handleClickOutside = (e) => {
+    if (store.isLoginClick && loginModalRef.value && !loginModalRef.value.contains(e.target)) {
+        store.isLoginClick = false;
+    }
+};
+
+watchEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    // Clean up function before running new effect
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+});
 
 </script>
 
 <template>
     <div class="log-in-background" v-if="store.isLoginClick">
-        <div class="log-in-modal">
+        <div class="log-in-modal" ref="loginModalRef">
             <img alt="Large format of logo" class="large-logo" src="@/assets/largeLogo.png" />
             <!-- v-model simplifies the process of binding form input values to the component’s data -->
             <form @submit.prevent="handleSubmit" class="log-in-form">
