@@ -83,7 +83,7 @@ const handleCurrentUser = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2.5rem 0 0.4rem;
+    padding: 0 2rem 0 0.4rem;
     background-color: var(--white);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
