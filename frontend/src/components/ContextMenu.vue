@@ -33,10 +33,8 @@ const { emit } = defineEmits();
     background-color: var(--white);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 4px;
-    padding: 0.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
     z-index: 10000;
 }
+
+
 </style>

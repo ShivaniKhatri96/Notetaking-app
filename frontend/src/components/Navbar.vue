@@ -69,10 +69,10 @@ const showContextMenu = (event) => {
 
 <template>
     <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
-        <div @click="handleMyNotes">
+        <div @click="handleMyNotes" class="context-menu-item">
             My notes
         </div>
-        <div @click="handleLogoutClick">
+        <div @click="handleLogoutClick" class="context-menu-item">
             logout
         </div>
     </ContextMenu>
