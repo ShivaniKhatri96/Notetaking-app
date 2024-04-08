@@ -84,12 +84,11 @@ const showContextMenu = (event) => {
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div> -->
-    <button @click="showContextMenu">click me!</button>
         <div v-if="!authStore.token" class="login-wrapper" @click="handleLoginClick">
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
         <div v-else>
-            <div @click="handleCurrentUser" class="user-nav">
+            <div @click="showContextMenu" class="user-nav">
                 <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
                 <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
