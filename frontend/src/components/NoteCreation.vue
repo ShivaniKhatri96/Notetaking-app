@@ -1,6 +1,12 @@
 <script setup>
 import { ref } from "vue";
+
 const isCreatingNote = ref(false);
+
+const createNote = ref({
+    title: '',
+    content: ''
+})
 const handleClick = () => {
     isCreatingNote.value = true;
 }
@@ -9,17 +15,26 @@ const handleClickOutside = () => {
         isCreatingNote.value = false;
     }
 }
+
+const handleCreateNote = () => {
+    console.log('create note');
+}
+
 </script>
 <template>
     <!-- using v-show because it doesn't work with v-if -->
     <!-- v-show keeps the element in the DOM. So, this works efficiently -->
     <div v-click-outside="handleClickOutside" class="create-wrapper" @click="handleClick">
         <div v-show="!isCreatingNote" class="divy">
-            <input type="text" placeholder="Take a note..." />
+            <input type="text" placeholder="Take a note..." v-model="createNote.content" />
         </div>
         <div v-show="isCreatingNote" class="divy">
-            <input type="text" placeholder="Title" />
-            <textarea rows="8" cols placeholder="Take a note..."></textarea>
+            <input type="text" placeholder="Title" v-model="createNote.title" />
+            <textarea rows="8" cols placeholder="Take a note..." v-model="createNote.content"></textarea>
+            <div>
+                <button>Cancel</button>
+                <button @click="handleCreateNote">Create</button>
+            </div>
         </div>
     </div>
 </template>
