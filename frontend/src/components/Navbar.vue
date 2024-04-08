@@ -33,7 +33,9 @@ watch(() => authStore.token, async () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem('noteworthyUser', data);
+                // stringifying the object to store in localStorage
+                const currentUser = JSON.stringify(data);
+                localStorage.setItem('noteworthyUser', currentUser);
                 authStore.currentUser(data);
             } else {
                 console.log("Error fetching current user");
@@ -43,7 +45,7 @@ watch(() => authStore.token, async () => {
         }
     }
 })
-
+console.log('username',authStore?.user?.username);
 </script>
 
 <template>
@@ -61,7 +63,8 @@ watch(() => authStore.token, async () => {
         </div>
         <div v-else>
             <div>
-                <font-awesome-icon :icon="['fas', 'circle-user']" /> {{ authStore.user.username }} 
+                <font-awesome-icon :icon="['fas', 'circle-user']" /> 
+                {{ authStore.user?.username }} 
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
             <div @click="handleLogoutClick">
