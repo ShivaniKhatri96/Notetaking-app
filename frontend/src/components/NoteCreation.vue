@@ -17,7 +17,10 @@ const handleClickOutside = () => {
         <div v-show="!isCreatingNote" class="divy">
             <input type="text" placeholder="Take a note..." />
         </div>
-        <div v-show="isCreatingNote" class="divy">show</div>
+        <div v-show="isCreatingNote" class="divy">
+            <input type="text" placeholder="Title" />
+            <textarea rows="8" cols placeholder="Take a note..."></textarea>
+        </div>
     </div>
 </template>
 <style scoped>
