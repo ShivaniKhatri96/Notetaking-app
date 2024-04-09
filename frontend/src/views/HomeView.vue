@@ -4,36 +4,27 @@ import NoteCreation from '../components/NoteCreation.vue';
 import AllNotes from '../components/AllNotes.vue';
 import NoDataMessage from '../components/NoDataMessage.vue';
 
-// import { useStore } from '@/stores/store';
-// const store = useStore();
-// console.log(store.AllNotes)
+import { useNotesStore } from '@/stores/notesStore';
 
-import { useAuthStore } from '@/stores/auth';
-const authStore = useAuthStore();
+const { notes, addNotes} = useNotesStore();
+
 
 let isNotesLoading = ref(false);
 // change it to true and then false again!!!
-console.log('isNotesLoading', isNotesLoading);
-
-
-const fetchAllNotes = async () => {
-  // isNotesLoading.value = true;
+ 
+onMounted(async () => {
   try {
     const response = await fetch("http://localhost:8000/api/notes")
     if (response.ok) {
       const data = await response.json();
-      // isNotesLoading.value = true;
       console.log('data', data);
-      console.log('isNotesLoading', isNotesLoading);
+      addNotes(data)
     }
-  } catch (erorr) {
+  } catch (error) {
     console.log('error', error);
   }
-}
-onMounted(() => {
-    fetchAllNotes();
-} )
-
+})
+console.log('notes', notes)
 </script>
 
 <template>
