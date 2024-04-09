@@ -146,7 +146,7 @@ app.get("/api/usernotes", authenticateToken, async (req, res) => {
 });
 
 // Get all notes
-app.get("/api/notes", async (req, res) => {
+app.get("/api/notes",authenticateToken, async (req, res) => {
   try {
     const notes = await Note.find({});
     res.status(200).json(notes);
