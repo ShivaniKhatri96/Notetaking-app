@@ -20,7 +20,8 @@
   background-color: var(--light-green);
   color: var(--white);
 }
-.green-btn:disabled, .green-btn:hover:disabled {
+.green-btn:disabled,
+.green-btn:hover:disabled {
   border: solid 2px var(--light-green-50);
   background-color: var(--light-green-50);
   cursor: auto;
@@ -39,7 +40,7 @@
 
 .loading-icon {
   font-size: 2.5rem;
-  color: var(--light-green);
+  color: var(--light-gray);
 }
 /* #app {
   max-width: 1280px;
@@ -47,4 +48,3 @@
   padding: 2rem;
   font-weight: normal;
 } */
-
