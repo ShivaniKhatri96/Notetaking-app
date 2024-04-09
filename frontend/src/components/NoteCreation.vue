@@ -71,8 +71,8 @@ const cancelCreateNote = () => {
             :style="{ padding: !isCreatingNote ? `1rem` : '' }"></textarea>
         <div v-show="isCreatingNote" class="button-container">
             <button class="btn black-btn" @click="cancelCreateNote">Cancel</button>
-            <!-- disable the button when both title and content is missing -->
-            <button class="btn green-btn" @click="handleCreateNote">Create</button>
+            <button :disabled="!createNote.content.length" class="btn green-btn"
+                @click="handleCreateNote">Create</button>
         </div>
     </div>
 </template>

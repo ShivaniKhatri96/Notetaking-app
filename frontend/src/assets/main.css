@@ -20,6 +20,11 @@
   background-color: var(--light-green);
   color: var(--white);
 }
+.green-btn:disabled, .green-btn:hover:disabled {
+  border: solid 2px var(--light-green-50);
+  background-color: var(--light-green-50);
+  cursor: auto;
+}
 .green-btn:hover {
   background-color: var(--light-green-80);
 }
