@@ -5,8 +5,10 @@ export const useNotesStore = defineStore('allNotes', {
   }),
   // Mutations to update the tasks
   actions: {
-    addNotes(note) {
-      this.notes.push(...note)
+    setNotes(data) {
+        if(!this.notes.length){
+            this.notes.push(data)
+        }
     },
     removeNotes(noteId) {
       this.notes = this.notes.filter((note) => note.id !== noteId)
