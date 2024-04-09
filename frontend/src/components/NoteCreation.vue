@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from '@/stores/auth';
 
+const authStore = useAuthStore();
 const isCreatingNote = ref(false);
 
 const createNote = ref({
@@ -18,10 +20,30 @@ const handleClickOutside = () => {
     }
 }
 
-const handleCreateNote = () => {
+const handleCreateNote = async () => {
     const { title, content } = createNote.value;
-    console.log('create note', title + ':' + content);
-    isCreatingNote.value = false;
+    const myHeaders = new Headers();
+        myHeaders.append("Authorization", authStore.token);
+    try {
+        const response = await fetch(
+            "http://localhost:8000/api/notes",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    title,
+                    content,
+                }),
+                headers:myHeaders,
+            }
+        )
+        if (response.ok) {
+            isCreatingNote.value = false;
+            console.log(response.status);
+        }
+    }
+    catch (err) {
+        console.log(err);
+    };
 }
 
 const cancelCreateNote = () => {
