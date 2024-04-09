@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import NoteCreation from '../components/NoteCreation.vue';
 import AllNotes from '../components/AllNotes.vue';
 import NoDataMessage from '../components/NoDataMessage.vue';
+import Loading from '../components/Loading.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 
@@ -40,12 +41,9 @@ console.log('notes', notes)
 <template>
   <main class="home">
     <NoteCreation />
-    <div class="loading-icon-wrapper" v-if="isNotesLoading">
-      <font-awesome-icon :icon="['fas', 'spinner']" spin-pulse class="loading-icon" />
-    </div>
+    <Loading v-if="isNotesLoading" />
     <NoDataMessage v-else-if="!notes[0]?.length" message="No notes are currently available" />
     <AllNotes v-else />
-
   </main>
 </template>
 <style scoped>
@@ -57,13 +55,5 @@ console.log('notes', notes)
   gap: 3rem;
   padding: 2rem;
   min-height: calc(100vh - var(--navbar-height));
-}
-
-.loading-icon-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
 }
 </style>

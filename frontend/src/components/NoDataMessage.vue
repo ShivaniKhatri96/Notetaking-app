@@ -14,13 +14,6 @@ defineProps({
     </div>
 </template>
 <style scoped>
-.no-data-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
 
 .chilling-girl {
     width: 14rem;
