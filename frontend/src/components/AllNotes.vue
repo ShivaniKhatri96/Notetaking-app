@@ -1,7 +1,6 @@
 <script setup>
 </script>
 <template>
-Notes
+    Notes
 </template>
-<style scoped>
-</style>
+<style scoped></style>
