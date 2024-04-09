@@ -7,17 +7,17 @@ import NoDataMessage from '../components/NoDataMessage.vue';
 
 onMounted(() => {
   fetch("http://localhost:8000/api/notes")
-  .then(response => response.json())
-  .then(result => console.log('result', result))
-  .catch(error => console.log('error', error));
+    .then(response => response.json())
+    .then(result => console.log('result', result))
+    .catch(error => console.log('error', error));
 })
 </script>
 
 <template>
   <main class="home">
-   <NoteCreation />
-   <NoDataMessage message="No notes are currently available"/>
-   <!-- <AllNotes /> -->
+    <NoteCreation />
+    <NoDataMessage message="No notes are currently available" />
+    <!-- <AllNotes /> -->
   </main>
 </template>
 <style scoped>
@@ -28,5 +28,6 @@ onMounted(() => {
   justify-content: center;
   gap: 3rem;
   padding: 2rem;
+  min-height: calc(100vh - var(--navbar-height));
 }
 </style>

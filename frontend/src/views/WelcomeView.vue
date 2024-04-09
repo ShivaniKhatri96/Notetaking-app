@@ -30,7 +30,7 @@ const handleLoginClick = () => {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    height: calc(100vh - 65px);
+    height: calc(100vh - var(--navbar-height));
 }
 
 .Noteworthy-box {

@@ -1,9 +1,10 @@
 /* color palette */
 :root {
+  /* color palette */
   --background-color: #f9f9f9;
   --white: #ffffff;
   --black: #000000;
-  --red: #8A0000;
+  --red: #8a0000;
   --gray: #777777;
   --pink: #e18dd9;
   --text-color: #333333;
@@ -11,6 +12,9 @@
   --light-green: rgb(164, 198, 57);
   --light-green-50: rgb(164, 198, 57, 0.5);
   --light-green-80: rgb(164, 198, 57, 0.8);
+
+  /* navbar height */
+  --navbar-height: 65px;
 }
 
 *,

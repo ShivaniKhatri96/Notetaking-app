@@ -20,11 +20,13 @@ defineProps({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    /* height: 100%; */
+   flex-grow: 1;
 }
 
 .chilling-girl {
-    width: 18rem;
+    /* width: 18rem; */
+    width: 12rem;
 }
 
 .message-style {
