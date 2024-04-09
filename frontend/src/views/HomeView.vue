@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import NoteCreation from '../components/NoteCreation.vue';
+import AllNotes from '../components/AllNotes.vue';
+import NoDataMessage from '../components/NoDataMessage.vue';
 // const elem = ref();
 
 onMounted(() => {
@@ -14,12 +16,17 @@ onMounted(() => {
 <template>
   <main class="home">
    <NoteCreation />
+   <NoDataMessage />
+   <!-- <AllNotes /> -->
   </main>
 </template>
 <style scoped>
 .home {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 3rem;
   padding: 2rem;
 }
 </style>
