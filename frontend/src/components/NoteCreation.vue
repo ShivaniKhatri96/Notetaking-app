@@ -22,8 +22,11 @@ const handleClickOutside = () => {
 
 const handleCreateNote = async () => {
     const { title, content } = createNote.value;
+    console.log(title);
+    console.log('token', authStore.token);
     const myHeaders = new Headers();
-        myHeaders.append("Authorization", authStore.token);
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", authStore.token);
     try {
         const response = await fetch(
             "http://localhost:8000/api/notes",
@@ -33,11 +36,13 @@ const handleCreateNote = async () => {
                     title,
                     content,
                 }),
-                headers:myHeaders,
+                headers: myHeaders,
             }
-        )
+        );
         if (response.ok) {
-            isCreatingNote.value = false;
+            const data = await response.json();
+            // isCreatingNote.value = false;
+            console.log(data)
             console.log(response.status);
         }
     }
