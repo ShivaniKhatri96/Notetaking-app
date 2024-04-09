@@ -41,9 +41,11 @@ const handleCreateNote = async () => {
         );
         if (response.ok) {
             const data = await response.json();
-            // isCreatingNote.value = false;
+            isCreatingNote.value = false;
+            createNote.value.title = '';
+            createNote.value.content = '';
             console.log(data)
-            console.log(response.status);
+            console.log('note successfully created');
         }
     }
     catch (err) {
@@ -69,6 +71,7 @@ const cancelCreateNote = () => {
             :style="{ padding: !isCreatingNote ? `1rem` : '' }"></textarea>
         <div v-show="isCreatingNote" class="button-container">
             <button class="btn black-btn" @click="cancelCreateNote">Cancel</button>
+            <!-- disable the button when both title and content is missing -->
             <button class="btn green-btn" @click="handleCreateNote">Create</button>
         </div>
     </div>
