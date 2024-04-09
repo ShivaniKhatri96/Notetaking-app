@@ -26,7 +26,8 @@ const handleCreateNote = () => {
     <!-- using v-show because it doesn't work with v-if -->
     <!-- v-show keeps the element in the DOM. So, this works efficiently -->
     <div v-click-outside="handleClickOutside" class="create-wrapper" @click="handleClick">
-        <input v-show="isCreatingNote" type="text" placeholder="Title" v-model="createNote.title" />
+        <input class="create-note-input" v-show="isCreatingNote" type="text" placeholder="Title"
+            v-model="createNote.title" />
         <textarea class="create-note-input" :rows="isCreatingNote ? 8 : 1" cols placeholder="Take a note..."
             v-model="createNote.content"></textarea>
         <div v-show="isCreatingNote">
@@ -38,7 +39,8 @@ const handleCreateNote = () => {
 <style scoped>
 .create-wrapper {
     display: flex;
-    gap: 5rem;
+    flex-direction: column;
+    gap: 1rem;
     justify-content: center;
     background-color: var(--white);
     width: 40rem;
