@@ -19,6 +19,7 @@ const handleClickOutside = () => {
 const handleCreateNote = () => {
     const { title, content } = createNote.value;
     console.log('create note', title + ':' + content);
+    isCreatingNote.value = false;
 }
 
 const cancelCreateNote = () => {
