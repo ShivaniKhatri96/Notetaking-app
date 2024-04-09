@@ -1,22 +1,33 @@
 <script setup>
-import { stringifyQuery } from 'vue-router';
 
 defineProps({
     message: {
-        type: stringifyQuery,
+        type: String,
         required: true,
     }
 })
 </script>
 <template>
-    <div>
+    <div class="no-data-wrapper">
         <img alt="Image shown to represent no notes are present" class="chilling-girl"
             src="@/assets/girlChilling.png" />
-        <p>{{ message }}</p>
+        <p class="message-style"> {{ message }}. Create a new note to display here</p>
     </div>
 </template>
 <style scoped>
+.no-data-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .chilling-girl {
     width: 18rem;
+}
+
+.message-style {
+    text-align: center;
 }
 </style>
