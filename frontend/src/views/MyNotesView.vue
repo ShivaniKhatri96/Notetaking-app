@@ -1,15 +1,22 @@
+<script setup>
+import NoDataMessage from '../components/NoDataMessage.vue';
+</script>
 <template>
-  <div class="about">
-    <h1>Notes</h1>
+  <div class="my-notes">
+    <NoDataMessage message="You haven't created notes yet" />
   </div>
 </template>
 
 <style>
 @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
+  .my-notes {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 2rem;
+    min-height: calc(100vh - var(--navbar-height));
   }
 }
 </style>
