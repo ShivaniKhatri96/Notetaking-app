@@ -8,22 +8,35 @@ import { useNotesStore } from '@/stores/notesStore';
 
 const { notes, addNotes} = useNotesStore();
 
-
 let isNotesLoading = ref(false);
 // change it to true and then false again!!!
+
+// const fetchAllNotes = async () => {
+//   try {
+//     const response = await fetch("http://localhost:8000/api/notes")
+//     if (response.ok) {
+//       const data = await response.json();
+//       console.log('data', data);
+//       addNotes(data)
+//     }
+//   } catch (error) {
+//     console.log('error', error);
+//   }
+// }
+// fetchAllNotes();
  
-onMounted(async () => {
-  try {
-    const response = await fetch("http://localhost:8000/api/notes")
-    if (response.ok) {
-      const data = await response.json();
-      console.log('data', data);
-      addNotes(data)
-    }
-  } catch (error) {
-    console.log('error', error);
-  }
-})
+// onMounted(async () => {
+//   try {
+//     const response = await fetch("http://localhost:8000/api/notes")
+//     if (response.ok) {
+//       const data = await response.json();
+//       console.log('data', data);
+//       addNotes(data)
+//     }
+//   } catch (error) {
+//     console.log('error', error);
+//   }
+// })
 console.log('notes', notes)
 </script>
 
