@@ -11,8 +11,6 @@ const authStore = useAuthStore();
 const { notes, setNotes } = useNotesStore();
 
 let isNotesLoading = ref(false);
-// change it to true and then false again!!!
-
 
 onMounted(async () => {
   if (authStore.token !== null) {

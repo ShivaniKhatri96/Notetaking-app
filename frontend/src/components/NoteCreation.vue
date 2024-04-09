@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import { useAuthStore } from '@/stores/auth';
+import { useNotesStore } from '@/stores/notesStore';
 
 const authStore = useAuthStore();
+const { notes, addNotes } = useNotesStore();
 const isCreatingNote = ref(false);
 
 const createNote = ref({
@@ -22,8 +24,6 @@ const handleClickOutside = () => {
 
 const handleCreateNote = async () => {
     const { title, content } = createNote.value;
-    console.log(title);
-    console.log('token', authStore.token);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", authStore.token);
@@ -44,8 +44,7 @@ const handleCreateNote = async () => {
             isCreatingNote.value = false;
             createNote.value.title = '';
             createNote.value.content = '';
-            console.log(data)
-            console.log('note successfully created');
+            addNotes(data)
         }
     }
     catch (err) {
