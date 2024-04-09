@@ -4,6 +4,7 @@ import NoDataMessage from '../components/NoDataMessage.vue';
 <template>
   <div class="my-notes">
     <NoDataMessage message="You haven't created notes yet" />
+    <!-- <font-awesome-icon :icon="['fas', 'spinner']" spin-pulse class="loading-icon"/> -->
   </div>
 </template>
 

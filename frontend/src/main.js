@@ -10,11 +10,11 @@ import clickOutside from './customDirective/clickOutside'
 import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faRightToBracket, faEllipsisVertical, faCircleUser, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faRightToBracket, faEllipsisVertical, faCircleUser, faAngleDown, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import {} from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
-library.add(faRightToBracket, faEllipsisVertical, faCircleUser, faAngleDown)
+library.add(faRightToBracket, faEllipsisVertical, faCircleUser, faAngleDown, faSpinner)
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)

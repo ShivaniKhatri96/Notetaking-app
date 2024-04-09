@@ -16,7 +16,8 @@ onMounted(() => {
 <template>
   <main class="home">
     <NoteCreation />
-    <NoDataMessage message="No notes are currently available" />
+    <!-- <NoDataMessage message="No notes are currently available" /> -->
+    <font-awesome-icon :icon="['fas', 'spinner']" spin-pulse class="loading-icon"/>
     <!-- <AllNotes /> -->
   </main>
 </template>
