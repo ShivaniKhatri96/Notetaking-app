@@ -21,6 +21,11 @@ const handleCreateNote = () => {
     console.log('create note', title + ':' + content);
 }
 
+const cancelCreateNote = () => {
+    isCreatingNote.value = false;
+    console.log('cancel')
+}
+
 </script>
 <template>
     <!-- using v-show because it doesn't work with v-if -->
@@ -30,9 +35,9 @@ const handleCreateNote = () => {
             v-model="createNote.title" />
         <textarea class="create-note-input" :rows="isCreatingNote ? 8 : 1" cols placeholder="Take a note..."
             v-model="createNote.content"></textarea>
-        <div v-show="isCreatingNote">
-            <button>Cancel</button>
-            <button @click="handleCreateNote">Create</button>
+        <div v-show="isCreatingNote" class="button-container">
+            <button  @click="cancelCreateNote">Cancel</button>
+            <button class="btn green-btn" @click="handleCreateNote">Create</button>
         </div>
     </div>
 </template>
@@ -56,5 +61,11 @@ const handleCreateNote = () => {
 
 .create-note-input:focus {
     outline: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
 }
 </style>

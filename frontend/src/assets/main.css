@@ -3,9 +3,29 @@
 .context-menu-item {
   padding: 0.5rem;
 }
-.context-menu-item:hover{
+.context-menu-item:hover {
   cursor: pointer;
   background-color: var(--background-color);
+}
+.btn {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.green-btn {
+  border: solid 1px var(--light-green);
+  background-color: var(--light-green);
+  color: var(--white);
+}
+.green-btn:hover {
+  background-color: var(--light-green-80);
+}
+.black-btn {
+}
+.red-btn {
 }
 /* #app {
   max-width: 1280px;
@@ -13,30 +33,4 @@
   padding: 2rem;
   font-weight: normal;
 }
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-} */
+*/
