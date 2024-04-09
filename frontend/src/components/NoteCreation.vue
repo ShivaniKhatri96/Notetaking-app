@@ -36,7 +36,7 @@ const cancelCreateNote = () => {
         <textarea class="create-note-input" :rows="isCreatingNote ? 8 : 1" cols placeholder="Take a note..."
             v-model="createNote.content"></textarea>
         <div v-show="isCreatingNote" class="button-container">
-            <button  @click="cancelCreateNote">Cancel</button>
+            <button class="btn black-btn" @click="cancelCreateNote">Cancel</button>
             <button class="btn green-btn" @click="handleCreateNote">Create</button>
         </div>
     </div>

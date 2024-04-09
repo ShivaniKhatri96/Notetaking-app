@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 .green-btn {
-  border: solid 1px var(--light-green);
+  border: solid 2px var(--light-green);
   background-color: var(--light-green);
   color: var(--white);
 }
@@ -24,6 +24,10 @@
   background-color: var(--light-green-80);
 }
 .black-btn {
+  border: solid 2px var(--gray);
+}
+.black-btn:hover {
+  background-color: var(--background-color);
 }
 .red-btn {
 }
