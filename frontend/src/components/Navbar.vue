@@ -62,7 +62,7 @@ const showContextMenu = (event) => {
     menuY.value = event.clientY;
     // showMenu.value = true;
     showMenu.value = !showMenu.value;
-    console.log('event', event)
+    // console.log('event', event)
 };
 const outsideContextMenu = () => {
     if (showMenu.value = true) {
