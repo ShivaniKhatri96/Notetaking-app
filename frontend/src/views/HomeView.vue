@@ -16,7 +16,7 @@ onMounted(() => {
 <template>
   <main class="home">
    <NoteCreation />
-   <NoDataMessage />
+   <NoDataMessage message="No notes are currently available. Create a new note to display here"/>
    <!-- <AllNotes /> -->
   </main>
 </template>
