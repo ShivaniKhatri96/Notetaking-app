@@ -13,6 +13,8 @@ const handleClick = () => {
 const handleClickOutside = () => {
     if (isCreatingNote.value === true) {
         isCreatingNote.value = false;
+        createNote.value.title = '';
+        createNote.value.content = '';
     }
 }
 
@@ -23,8 +25,9 @@ const handleCreateNote = () => {
 }
 
 const cancelCreateNote = () => {
+    createNote.value.title = '';
+    createNote.value.content = '';
     isCreatingNote.value = false;
-    console.log('cancel')
 }
 
 </script>
