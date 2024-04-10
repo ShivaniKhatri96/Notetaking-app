@@ -47,7 +47,7 @@ const isEditMode = ref(false);
 const handleEditMode = () => {
     isEditMode.value = true;
 
-    console.log('update:', updateNote.value);
+    console.log('note:', updateNote.value);
 }
 
 const updateNote = ref({
@@ -55,6 +55,14 @@ const updateNote = ref({
     content: props?.content
 });
 
+const handleSave = () => {
+    console.log('update:', updateNote.value);
+};
+const handleCancel = () => {
+    updateNote.value.title = props?.title;
+    updateNote.value.content = props?.content;
+    isEditMode.value = false;
+};
 </script>
 <template>
     <div class="card">
@@ -71,8 +79,9 @@ const updateNote = ref({
             </div>
             <div v-if="noteCreatorId === user?.userId">
                 <div class="flex-row" v-if="isEditMode">
-                    <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div>
-                    <div class="note-icon-button">Cancel</div>
+                    <div class="note-icon-button" @click="handleSave"><font-awesome-icon
+                            :icon="['fas', 'floppy-disk']" /> Save</div>
+                    <div class="note-icon-button" @click="handleCancel">Cancel</div>
                 </div>
                 <div class="flex-row" v-else>
                     <div class="note-icon-button" @click="handleEditMode"><font-awesome-icon
