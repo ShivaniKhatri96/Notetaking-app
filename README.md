@@ -1,14 +1,25 @@
 # Noteworthy: A Notetaking-app
-> It's a notetaking app
-### Screenshots
+> Noteworthy is a notetaking app
+
 ### Tools used
+> Frontend
+- Vue 3: Frontend Framework
+- Vue-router: used for routing
+- Pinia: used for managing global states 
+- CSS: for styling
+> I didn't use CSS framework because I am already working with a new javascript Framework. So, I wanted to keep things as simple as possible.
+
+> Backend
+- Node.js
+- Express.js
+- MongoDB (cloud)
+
 ### Responsive Design
+> Will add later
+
 ### Functionalities
 ### Links used
-### Notes
-- Pinia used for managing global states 
-- vue-router used for routing
-- https://new.express.adobe.com/ for creating logo
-- box-shadow from https://getcssscan.com/css-box-shadow-examples
-- font awesome installed for icons
-- for backend: Node.js, express, mongodb, jsonwebtoken are used
+- [Adobe express](https://new.express.adobe.com/) used for creating logo
+- box-shadow used from [css-box-shadow-examples](https://getcssscan.com/css-box-shadow-examples)
+- [font awesome](https://fontawesome.com/) used for icons
+
