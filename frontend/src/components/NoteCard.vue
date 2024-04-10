@@ -29,15 +29,16 @@ defineProps({
                 <img alt="placeholder image to represent note creator" class="note-creator-icon"
                     src="@/assets/person.png" />
                 <div class="note-creator">
-                    <div>{{ noteCreator }}</div>
-                    <div>Public Note</div>
+                    <div class="creator-name">{{ noteCreator }}</div>
+                    <div :class="`public-box ${noteCreatorId === user?.userId ? 'current-user' : ''}`">
+                        <font-awesome-icon :icon="['fas', 'user-group']" /> . Public Note
+                    </div>
                 </div>
             </div>
             <div v-if="noteCreatorId === user?.userId" class="flex-row">
                 <div>Edit</div>
                 <div>Delete</div>
             </div>
-
         </div>
         <div class="content-box">
             <div>{{ title }}</div>
@@ -61,7 +62,7 @@ defineProps({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.8rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
@@ -69,16 +70,29 @@ defineProps({
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    /* font-weight: 700; */
+}
+
+.note-creator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
 }
 
 .note-creator-icon {
-    font-size: 2.5rem;
     color: var(--light-gray);
     width: 35px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 50%;
     background-color: var(--white);
+}
+
+.creator-name {
+    font-weight: 700;
+}
+
+.public-box {
+    font-size: 0.65rem;
+    color: var(--gray);
 }
 
 .current-user {
