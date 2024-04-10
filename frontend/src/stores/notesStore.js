@@ -14,7 +14,7 @@ export const useNotesStore = defineStore('allNotes', {
       this.notes[0].push(newNote)
     },
     removeNotes(noteId) {
-      this.notes = this.notes.filter((note) => note.id !== noteId)
+      this.notes[0] = this.notes[0].filter((note) => note._id !== noteId)
     }
   }
 })

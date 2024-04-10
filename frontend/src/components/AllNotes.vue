@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 <template>
     <div class="all-cards">
-        <NoteCard v-for="note in notes[0]" :key="note._id"
+        <NoteCard v-for="note in notes[0]" :key="note._id" :noteId="note._id"
             :noteCreator="noteCreators[0]?.find(el => el._id === note.user)?.username || ''" :noteCreatorId="note.user"
             :title="note?.title" :content="note.content" />
     </div>

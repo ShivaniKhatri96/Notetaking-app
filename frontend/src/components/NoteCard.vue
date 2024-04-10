@@ -1,14 +1,18 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
+import { useNotesStore } from '@/stores/notesStore';
 const { user } = useAuthStore();
-// import { useNotesStore } from '@/stores/notesStore';
-// const { notes, setNotes } = useNotesStore();
+const { notes, removeNotes } = useNotesStore();
 defineProps({
-    noteCreatorId: {
+    noteId: {
         type: String,
         required: true,
     },
     noteCreator: {
+        type: String,
+        required: true,
+    },
+    noteCreatorId: {
         type: String,
         required: true,
     },
@@ -21,6 +25,12 @@ defineProps({
         required: true,
     }
 })
+
+const handleDeleteNote = (noteId) => {
+    console.log('noteId', noteId)
+    removeNotes(noteId)
+    console.log('after delete notes', notes)
+}
 </script>
 <template>
     <div class="card">
@@ -38,7 +48,8 @@ defineProps({
             <div v-if="noteCreatorId === user?.userId" class="flex-row">
                 <!-- <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div> -->
                 <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</div>
-                <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</div>
+                <div class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
+                        :icon="['fas', 'trash-can']" /> Delete</div>
             </div>
         </div>
         <div class="content-box">
