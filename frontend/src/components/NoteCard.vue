@@ -36,8 +36,9 @@ defineProps({
                 </div>
             </div>
             <div v-if="noteCreatorId === user?.userId" class="flex-row">
-                <div>Edit</div>
-                <div>Delete</div>
+                <!-- <div><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div> -->
+                <div><font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</div>
+                <div><font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</div>
             </div>
         </div>
         <div class="content-box">
