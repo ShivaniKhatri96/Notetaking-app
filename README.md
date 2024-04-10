@@ -40,7 +40,7 @@
 - [Adobe express](https://new.express.adobe.com/) used for creating logo
 - box-shadow used from [css-box-shadow-examples](https://getcssscan.com/css-box-shadow-examples)
 - [font awesome](https://fontawesome.com/) used for icons
--[Microsoft copilot](https://copilot.microsoft.com/) used to generate animated drawings
+- [Microsoft copilot](https://copilot.microsoft.com/) used to generate animated drawings
 
 ### Final Words
 > It was really fun working on this project. Even though the final design is my own, I did took a lot of inspiration from [Google keep](https://keep.google.com/), [dribbble](https://dribbble.com/) and [Facebook posts](https://www.facebook.com/).
