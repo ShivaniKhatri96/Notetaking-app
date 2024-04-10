@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 const { token, user } = useAuthStore();
 const { notes, removeNotes } = useNotesStore();
-defineProps({
+const props = defineProps({
     noteId: {
         type: String,
         required: true,
@@ -46,7 +46,14 @@ const handleDeleteNote = async (noteId) => {
 const isEditMode = ref(false);
 const handleEditMode = () => {
     isEditMode.value = true;
+
+    console.log('update:', updateNote.value);
 }
+
+const updateNote = ref({
+    title: props?.title,
+    content: props?.content
+});
 
 </script>
 <template>
@@ -76,9 +83,9 @@ const handleEditMode = () => {
             </div>
         </div>
         <div class="content-box" v-if="isEditMode">
-            <div>
-                Edit mode is on...
-            </div>
+            <input class="update-note-input" type="text" placeholder="Title" v-model="updateNote.title" />
+            <textarea @click="handleClick" class="update-note-input" rows="13" placeholder="Take a note..."
+                v-model="updateNote.content"></textarea>
         </div>
         <div class="content-box" v-else>
             <div class="note-title">{{ title }}</div>
@@ -169,5 +176,17 @@ const handleEditMode = () => {
 
 .note-title {
     font-weight: 600;
+}
+
+.update-note-input {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--lighter-gray);
+    padding: 0.5rem;
+}
+
+.update-note-input:focus {
+    outline: none;
 }
 </style>

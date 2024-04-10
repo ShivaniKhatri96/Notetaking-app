@@ -4,7 +4,6 @@ import { useNotesStore } from '@/stores/notesStore';
 import { ref, onMounted } from "vue";
 
 const { notes, setNotes } = useNotesStore();
-console.log('notes from allNotes', notes);
 
 let noteCreators = ref([]);
 onMounted(async () => {
