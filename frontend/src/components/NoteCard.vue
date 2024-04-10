@@ -54,7 +54,7 @@ defineProps({
     background-color: var(--white);
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    height: 300px;
+    height: 350px;
     overflow: auto;
 }
 
