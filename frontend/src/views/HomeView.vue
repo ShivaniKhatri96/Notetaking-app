@@ -38,7 +38,7 @@ onMounted(async () => {
   <main class="home">
     <NoteCreation />
     <Loading v-if="isNotesLoading" />
-    <NoDataMessage v-else-if="!notes[0]?.length" message="No notes are currently available" />
+    <NoDataMessage v-else-if="!notes[0]?.length" message="No notes are currently available. . Create a new note to display here" />
     <AllNotes v-else />
   </main>
 </template>
