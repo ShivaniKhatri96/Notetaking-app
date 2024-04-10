@@ -24,7 +24,6 @@ onMounted(async () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('data from home', data);
         setNotes(data)
         isNotesLoading.value = false;
       }
@@ -33,7 +32,6 @@ onMounted(async () => {
     }
   }
 })
-console.log('notes from home page:', notes)
 </script>
 
 <template>

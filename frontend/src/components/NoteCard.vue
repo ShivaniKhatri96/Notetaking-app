@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 const { token, user } = useAuthStore();
@@ -41,6 +42,12 @@ const handleDeleteNote = async (noteId) => {
         console.log('error', error);
     }
 }
+
+const isEditMode = ref(false);
+const handleEditMode = () => {
+    isEditMode.value = true;
+}
+
 </script>
 <template>
     <div class="card">
@@ -55,14 +62,25 @@ const handleDeleteNote = async (noteId) => {
                     </div>
                 </div>
             </div>
-            <div v-if="noteCreatorId === user?.userId" class="flex-row">
-                <!-- <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div> -->
-                <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</div>
-                <div class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
-                        :icon="['fas', 'trash-can']" /> Delete</div>
+            <div v-if="noteCreatorId === user?.userId">
+                <div class="flex-row" v-if="isEditMode">
+                    <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div>
+                    <div class="note-icon-button">Cancel</div>
+                </div>
+                <div class="flex-row" v-else>
+                    <div class="note-icon-button" @click="handleEditMode"><font-awesome-icon
+                            :icon="['fas', 'pen-to-square']" /> Edit</div>
+                    <div class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
+                            :icon="['fas', 'trash-can']" /> Delete</div>
+                </div>
             </div>
         </div>
-        <div class="content-box">
+        <div class="content-box" v-if="isEditMode">
+            <div>
+                Edit mode is on...
+            </div>
+        </div>
+        <div class="content-box" v-else>
             <div class="note-title">{{ title }}</div>
             <div>{{ content }}</div>
         </div>
