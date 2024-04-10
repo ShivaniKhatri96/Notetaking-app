@@ -34,11 +34,14 @@
 - Navigation bar for mobile version: different style basically
 > I will be working on these on version2 branch during my free time
 
-
-
-
 ### Links used
 - [Adobe express](https://new.express.adobe.com/) used for creating logo
 - box-shadow used from [css-box-shadow-examples](https://getcssscan.com/css-box-shadow-examples)
 - [font awesome](https://fontawesome.com/) used for icons
+
+### Opening/ Running the file
+- Backend
+> `npm run dev` or `npm run start`
+- Frontend
+> `npm run dev`
 
