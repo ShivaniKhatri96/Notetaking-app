@@ -1,13 +1,15 @@
 <script setup>
 import NoteCard from '../components/NoteCard.vue';
 import { useNotesStore } from '@/stores/notesStore';
+
 const { notes, setNotes } = useNotesStore();
 console.log('notes from allNotes', notes);
+
 </script>
 <template>
     <div class="all-cards">
-        <NoteCard v-for="note in notes[0]" :key="note._id" :noteCreatorId="note.user" :title="note?.title"
-            :content="note.content" />
+        <NoteCard v-for="note in notes[0]" :key="note._id" :noteCreatorId="note.user"
+            :title="note?.title" :content="note.content" />
     </div>
 </template>
 <style scoped>
