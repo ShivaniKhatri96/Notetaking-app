@@ -1,7 +1,11 @@
 @import './base.css';
 
 .context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   padding: 0.5rem;
+  color: var(--text-color);
 }
 .context-menu-item:hover {
   cursor: pointer;

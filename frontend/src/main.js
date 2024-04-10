@@ -19,7 +19,9 @@ import {
   faUserGroup,
   faPenToSquare,
   faTrashCan,
-  faFloppyDisk
+  faFloppyDisk,
+  faUser,
+  faRightFromBracket
 } from '@fortawesome/free-solid-svg-icons'
 // import {} from '@fortawesome/free-regular-svg-icons'
 
@@ -33,7 +35,9 @@ library.add(
   faUserGroup,
   faPenToSquare,
   faTrashCan,
-  faFloppyDisk
+  faFloppyDisk,
+  faUser,
+  faRightFromBracket
 )
 
 const app = createApp(App)

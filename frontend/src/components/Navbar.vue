@@ -87,10 +87,10 @@ const outsideContextMenu = () => {
             </div>
             <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                 <div @click="handleMyNotes" class="context-menu-item">
-                    My notes
+                    <font-awesome-icon :icon="['fas', 'user']" /> My notes
                 </div>
                 <div @click="handleLogoutClick" class="context-menu-item">
-                    logout
+                    <font-awesome-icon :icon="['fas', 'right-from-bracket']" /> Log out
                 </div>
             </ContextMenu>
         </div>
