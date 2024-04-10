@@ -17,7 +17,14 @@
 > I didn't spent too much too on `backend`. So, it might not be perfect. My focus was to make `frontend` better.
 
 ### Responsive Design
-> The website is responsive. It works on all devices
+- The website is responsive. It works on all devices.
+> I will improve the responsiveness in version2 and make it better. 
+> Here, you can see example for small and large screens
+>
+![welcome small screen](./public/readmeAssets/welcomeMobile.png)
+![Home small screen](./public/readmeAssets/homeMobile.png)
+
+
 
 ### Functionalities
 - Requires a login to access
