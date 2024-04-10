@@ -40,8 +40,8 @@
 - [font awesome](https://fontawesome.com/) used for icons
 
 ### Opening/ Running the file
-- Backend
+#### Backend
 > `npm run dev` or `npm run start`
-- Frontend
+#### Frontend
 > `npm run dev`
 
