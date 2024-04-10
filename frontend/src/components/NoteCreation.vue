@@ -80,7 +80,8 @@ const cancelCreateNote = () => {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: center;
+    /* justify-content: center; */
+    align-self: center;
     background-color: var(--white);
     width: 100%;
     border-radius: 8px;

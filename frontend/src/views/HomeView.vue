@@ -24,7 +24,7 @@ onMounted(async () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('data', data);
+        console.log('data from home', data);
         setNotes(data)
         isNotesLoading.value = false;
       }
@@ -33,7 +33,7 @@ onMounted(async () => {
     }
   }
 })
-console.log('notes', notes)
+console.log('notes from home page:', notes)
 </script>
 
 <template>
@@ -48,7 +48,7 @@ console.log('notes', notes)
 .home {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   /* justify-content: center; */
   gap: 3rem;
   padding: 2rem;
