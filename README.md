@@ -26,10 +26,7 @@
   > I will improve the responsiveness in `version2` and make it even better.
   > Here, you can see examples for `small` and `large` screens
   >
-  > ![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png)
-  > ![Home small screen](./frontend/public/readmeAssets/homeMobile.png)
-  > ![welcome large screen](./frontend/public/readmeAssets/welcome.png)
-  > ![Home large screen](./frontend/public/readmeAssets/home.png)
+  > ![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png) > ![Home small screen](./frontend/public/readmeAssets/homeMobile.png) > ![welcome large screen](./frontend/public/readmeAssets/welcome.png) > ![Home large screen](./frontend/public/readmeAssets/home.png)
 
 ### Functionalities
 
@@ -41,7 +38,7 @@
 - It allows only note's creator to edit and delete it
   > Basically, POC and MVP are completed.
 
-### Things I want to add and improve in version2
+### Things I want to add and improve in version 2
 
 - Allow a note's creator to make it private.
   > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
