@@ -46,8 +46,6 @@ const handleDeleteNote = async (noteId) => {
 const isEditMode = ref(false);
 const handleEditMode = () => {
     isEditMode.value = true;
-
-    console.log('note:', updateNote.value);
 }
 
 const updateNote = ref({
@@ -57,7 +55,6 @@ const updateNote = ref({
 
 const handleSave = async (noteId) => {
     const { title, content } = updateNote.value;
-    console.log('title', title)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", token);
@@ -71,9 +68,7 @@ const handleSave = async (noteId) => {
             headers: myHeaders,
         })
         if (response.ok) {
-            console.log('update:', updateNote.value);
             updateNotes(noteId, title, content);
-            console.log('updated notes:', notes)
             isEditMode.value = false;
         }
     } catch (error) {
