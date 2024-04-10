@@ -1,5 +1,6 @@
-# Noteworthy: A Notetaking-app
+# Noteworthy: A Notetaking-app v.2
 > Noteworthy is a notetaking app
+> I will add version 2 updates here in this branch
 
 ### Tools used
 > Frontend
