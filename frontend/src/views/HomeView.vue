@@ -51,7 +51,7 @@ console.log('notes from home page:', notes)
   /* align-items: center; */
   /* justify-content: center; */
   gap: 3rem;
-  padding: 2.5rem 2rem;
+  padding: 2rem;
   min-height: calc(100vh - var(--navbar-height));
 }
 </style>
