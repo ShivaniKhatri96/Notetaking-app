@@ -23,7 +23,7 @@ defineProps({
 })
 </script>
 <template>
-    <div>
+    <div class="card">
         <div>{{ noteCreator }}</div>
         <div>Public Note</div>
         <div v-if="noteCreatorId === user?.userId">Edit</div>
@@ -31,4 +31,10 @@ defineProps({
         <div>{{ content }}</div>
     </div>
 </template>
-<style scoped></style>
+<style scoped>
+.card {
+    background-color: var(--light-green-5);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+</style>
