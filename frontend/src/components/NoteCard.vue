@@ -29,7 +29,7 @@ defineProps({
                 <img alt="placeholder image to represent note creator" class="note-creator-icon"
                     src="@/assets/person.png" />
                 <div class="note-creator">
-                    <div class="creator-name">{{ noteCreator }}</div>
+                    <div class="note-creator-name">{{ noteCreator }}</div>
                     <div :class="`public-box ${noteCreatorId === user?.userId ? 'current-user' : ''}`">
                         <font-awesome-icon :icon="['fas', 'user-group']" /> . Public Note
                     </div>
@@ -41,7 +41,7 @@ defineProps({
             </div>
         </div>
         <div class="content-box">
-            <div>{{ title }}</div>
+            <div class="note-title">{{ title }}</div>
             <div>{{ content }}</div>
         </div>
     </div>
@@ -86,7 +86,7 @@ defineProps({
     background-color: var(--white);
 }
 
-.creator-name {
+.note-creator-name {
     font-weight: 700;
 }
 
@@ -105,7 +105,15 @@ defineProps({
 }
 
 .content-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     padding: 1rem;
     overflow: auto;
+    font-size: 0.9rem;
+}
+
+.note-title {
+    font-weight: 600;
 }
 </style>
