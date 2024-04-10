@@ -21,8 +21,10 @@
 > I will improve the responsiveness in version2 and make it better. 
 > Here, you can see example for small and large screens
 >
-![welcome small screen](./public/readmeAssets/welcomeMobile.png)
-![Home small screen](./public/readmeAssets/homeMobile.png)
+![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png)
+![Home small screen](./frontend/public/readmeAssets/homeMobile.png)
+![welcome large screen](./frontend/public/readmeAssets/welcome.png)
+![Home large screen](./frontend/public/readmeAssets/home.png)
 
 
 
