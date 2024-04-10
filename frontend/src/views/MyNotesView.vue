@@ -3,7 +3,8 @@ import NoDataMessage from '../components/NoDataMessage.vue';
 </script>
 <template>
   <div class="my-notes">
-    <NoDataMessage message="You haven't created notes yet" />
+    <NoDataMessage message="This page will be available in V2" />
+    <!-- <NoDataMessage message="You haven't created notes yet" /> -->
     <!-- <font-awesome-icon :icon="['fas', 'spinner']" spin-pulse class="loading-icon"/> -->
   </div>
 </template>
