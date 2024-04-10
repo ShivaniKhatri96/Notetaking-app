@@ -2,6 +2,8 @@
   /* color palette */
   --background-color: #f9f9f9;
   --white: #ffffff;
+  --white-10: rgba(255,255,255,0.1);
+  --white-20: rgba(255,255,255,0.2);
   --black: #000000;
   --red: #8a0000;
   --lighter-gray: #f6f4f4;

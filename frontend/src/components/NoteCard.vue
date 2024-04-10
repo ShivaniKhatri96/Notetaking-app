@@ -36,9 +36,9 @@ defineProps({
                 </div>
             </div>
             <div v-if="noteCreatorId === user?.userId" class="flex-row">
-                <!-- <div><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div> -->
-                <div><font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</div>
-                <div><font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</div>
+                <!-- <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'floppy-disk']" /> Save</div> -->
+                <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</div>
+                <div class="note-icon-button"><font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</div>
             </div>
         </div>
         <div class="content-box">
@@ -103,6 +103,20 @@ defineProps({
 
 .other-users {
     background-color: var(--lighter-gray);
+}
+
+.note-icon-button {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background-color: var(--white-10);
+    padding: 0.25rem 0.4rem;
+    border: solid 1px var(--white-20);
+    border-radius: 4px;
+}
+
+.note-icon-button:hover {
+    cursor: pointer;
+    background-color: var(--white-20);
 }
 
 .content-box {
