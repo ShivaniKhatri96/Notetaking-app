@@ -26,7 +26,7 @@ defineProps({
     <div>
         <div>{{ noteCreator }}</div>
         <div>Public Note</div>
-        <div v-if="noteCreatorId === user.userId">Edit</div>
+        <div v-if="noteCreatorId === user?.userId">Edit</div>
         <div>{{ title }}</div>
         <div>{{ content }}</div>
     </div>
