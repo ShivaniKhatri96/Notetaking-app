@@ -85,6 +85,7 @@ const outsideContextMenu = () => {
                 <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
             </div>
+            <!-- There is some bug with this reusable contextMenu. I will fix it in Version 2 of this project (in a different branch) -->
             <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                 <div @click="handleMyNotes" class="context-menu-item">
                     <font-awesome-icon :icon="['fas', 'user']" /> My notes
