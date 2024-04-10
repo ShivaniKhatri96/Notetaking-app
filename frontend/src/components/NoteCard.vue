@@ -1,7 +1,7 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
-const { user } = useAuthStore();
+const { token, user } = useAuthStore();
 const { notes, removeNotes } = useNotesStore();
 defineProps({
     noteId: {
@@ -26,10 +26,20 @@ defineProps({
     }
 })
 
-const handleDeleteNote = (noteId) => {
-    console.log('noteId', noteId)
-    removeNotes(noteId)
-    console.log('after delete notes', notes)
+const handleDeleteNote = async (noteId) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", token);
+    try {
+        const response = await fetch(`http://localhost:8000/api/notes/${noteId}`, {
+            method: "DELETE",
+            headers: myHeaders,
+        });
+        if (response.ok) {
+            removeNotes(noteId)
+        }
+    } catch (error) {
+        console.log('error', error);
+    }
 }
 </script>
 <template>
