@@ -26,7 +26,8 @@ defineProps({
     <div class="card">
         <div :class="`card-header ${noteCreatorId === user?.userId ? 'current-user' : 'other-users'}`">
             <div class="flex-row">
-                <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
+                <img alt="placeholder image to represent note creator" class="note-creator-icon"
+                    src="@/assets/person.png" />
                 <div class="note-creator">
                     <div>{{ noteCreator }}</div>
                     <div>Public Note</div>
@@ -67,6 +68,17 @@ defineProps({
 .flex-row {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
+    /* font-weight: 700; */
+}
+
+.note-creator-icon {
+    font-size: 2.5rem;
+    color: var(--light-gray);
+    width: 35px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 50%;
+    background-color: var(--white);
 }
 
 .current-user {
