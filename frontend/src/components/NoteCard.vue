@@ -82,7 +82,8 @@ defineProps({
 }
 
 .current-user {
-    background-color: var(--light-green-10);
+    background-color: var(--pink);
+    color: var(--white);
 }
 
 .other-users {
