@@ -55,12 +55,32 @@ const updateNote = ref({
     content: props?.content
 });
 
-const handleSave = (noteId) => {
-    console.log('update:', updateNote.value);
-    updateNotes(noteId, updateNote.value.title, updateNote.value.content);
-    console.log('updated notes:', notes)
-    isEditMode.value = false;
+const handleSave = async (noteId) => {
+    const { title, content } = updateNote.value;
+    console.log('title', title)
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", token);
+    try {
+        const response = await fetch(`http://localhost:8000/api/notes/${noteId}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                title,
+                content,
+            }),
+            headers: myHeaders,
+        })
+        if (response.ok) {
+            console.log('update:', updateNote.value);
+            updateNotes(noteId, title, content);
+            console.log('updated notes:', notes)
+            isEditMode.value = false;
+        }
+    } catch (error) {
+        console.log('error', error);
+    }
 };
+
 const handleCancel = () => {
     updateNote.value.title = props?.title;
     updateNote.value.content = props?.content;
