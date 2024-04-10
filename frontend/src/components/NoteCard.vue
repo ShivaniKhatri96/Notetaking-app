@@ -3,7 +3,7 @@ import { ref, watch } from "vue";
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 const { token, user } = useAuthStore();
-const { notes, removeNotes } = useNotesStore();
+const { notes, removeNotes, updateNotes } = useNotesStore();
 const props = defineProps({
     noteId: {
         type: String,
@@ -55,8 +55,11 @@ const updateNote = ref({
     content: props?.content
 });
 
-const handleSave = () => {
+const handleSave = (noteId) => {
     console.log('update:', updateNote.value);
+    updateNotes(noteId, updateNote.value.title, updateNote.value.content);
+    console.log('updated notes:', notes)
+    isEditMode.value = false;
 };
 const handleCancel = () => {
     updateNote.value.title = props?.title;
@@ -79,15 +82,16 @@ const handleCancel = () => {
             </div>
             <div v-if="noteCreatorId === user?.userId">
                 <div class="flex-row" v-if="isEditMode">
-                    <div class="note-icon-button" @click="handleSave"><font-awesome-icon
-                            :icon="['fas', 'floppy-disk']" /> Save</div>
-                    <div class="note-icon-button" @click="handleCancel">Cancel</div>
+                    <button class="note-icon-button" @click="handleSave(noteId)"
+                        :disabled="!updateNote.content.length"><font-awesome-icon :icon="['fas', 'floppy-disk']" />
+                        Save</button>
+                    <button class="note-icon-button" @click="handleCancel">Cancel</button>
                 </div>
                 <div class="flex-row" v-else>
-                    <div class="note-icon-button" @click="handleEditMode"><font-awesome-icon
-                            :icon="['fas', 'pen-to-square']" /> Edit</div>
-                    <div class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
-                            :icon="['fas', 'trash-can']" /> Delete</div>
+                    <button class="note-icon-button" @click="handleEditMode"><font-awesome-icon
+                            :icon="['fas', 'pen-to-square']" /> Edit</button>
+                    <button class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
+                            :icon="['fas', 'trash-can']" /> Delete</button>
                 </div>
             </div>
         </div>
@@ -167,11 +171,19 @@ const handleCancel = () => {
     padding: 0.25rem 0.4rem;
     border: solid 1px var(--white-20);
     border-radius: 4px;
+    color: var(--white);
 }
 
 .note-icon-button:hover {
     cursor: pointer;
     background-color: var(--white-20);
+}
+
+.note-icon-button:disabled,
+.note-icon-button:hover:disabled {
+    cursor: auto;
+    background-color: var(--white-10);
+    opacity: 0.65;
 }
 
 .content-box {
