@@ -24,17 +24,44 @@ defineProps({
 </script>
 <template>
     <div class="card">
-        <div>{{ noteCreator }}</div>
-        <div>Public Note</div>
-        <div v-if="noteCreatorId === user?.userId">Edit</div>
-        <div>{{ title }}</div>
-        <div>{{ content }}</div>
+        <div :class="`card-header ${noteCreatorId === user?.userId ? 'current-user' : 'other-users'}`">
+            <div>{{ noteCreator }}</div>
+            <!-- <div>Public Note</div>
+            <div v-if="noteCreatorId === user?.userId">Edit</div> -->
+        </div>
+        <div class="content-box">
+            <div>{{ title }}</div>
+            <div>{{ content }}</div>
+        </div>
     </div>
 </template>
 <style scoped>
 .card {
-    background-color: var(--light-green-5);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background-color: var(--white);
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: 300px;
+    overflow: auto;
+}
+
+.card-header {
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.current-user {
+    background-color: var(--light-green-10);
+}
+
+.other-users {
+    background-color: var(--lighter-gray);
+}
+
+.content-box {
+    padding: 1rem;
+    overflow: auto;
 }
 </style>
