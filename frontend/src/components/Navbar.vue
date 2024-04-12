@@ -12,6 +12,7 @@ const authStore = useAuthStore();
 const showMenu = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
+const userRef = ref(null);
 
 const handleLoginClick = () => {
     //toggle
@@ -56,8 +57,6 @@ const handleMyNotes = () => {
     router.push('/my-notes');
 }
 
-const userRef = ref(null);
-
 // const showContextMenu = (event) => {
 //     event.preventDefault();
 //     console.log('event', event)
@@ -69,12 +68,8 @@ const userRef = ref(null);
 // };
 const showContextMenu = () => {
     const rect = userRef.value.getBoundingClientRect();
-    // const left = rect.left;
-    // const top = rect.top;
-
     menuX.value = rect.left;
     menuY.value = rect.top + 40;
-    // showMenu.value = true;
     showMenu.value = !showMenu.value;
 };
 
