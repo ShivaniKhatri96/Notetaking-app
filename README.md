@@ -1,6 +1,21 @@
 # Noteworthy: A Notetaking-app: V2
+
 ## I will add version 2 updates in this branch
+
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
+
+### Currently working on
+
+- Fixing navigation bar context menu issue
+
+### Things I want to add and improve in version 2
+
+- Allow a note's creator to make it private.
+  > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
+- Be accessible from a public url
+- Fix bug related to context menu I created. It tends to overflow from the window
+- Navigation bar for mobile version: different style basically
+  > I will be working on these on `version2` branch during my free time
 
 ### Tools used
 
@@ -37,19 +52,6 @@
 - It shows which user created a note
 - It allows only note's creator to edit and delete it
   > Basically, POC and MVP are completed.
-
-### Things I want to add and improve in version 2
-
-- Allow a note's creator to make it private.
-  > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
-- Be accessible from a public url
-- Fix bug related to context menu I created. It tends to overflow from the window
-- Navigation bar for mobile version: different style basically
-  > I will be working on these on `version2` branch during my free time
-
-### Currently working on
-
-- Fix navigation bar context menu issue
 
 ### Links used
 
