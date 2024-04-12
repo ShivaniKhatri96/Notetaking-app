@@ -56,14 +56,28 @@ const handleMyNotes = () => {
     router.push('/my-notes');
 }
 
-const showContextMenu = (event) => {
-    event.preventDefault();
-    menuX.value = event.clientX;
-    menuY.value = event.clientY;
+const userRef = ref(null);
+
+// const showContextMenu = (event) => {
+//     event.preventDefault();
+//     console.log('event', event)
+//     menuX.value = event.clientX;
+//     menuY.value = event.clientY;
+//     // showMenu.value = true;
+//     showMenu.value = !showMenu.value;
+//     // console.log('event', event)
+// };
+const showContextMenu = () => {
+    const rect = userRef.value.getBoundingClientRect();
+    // const left = rect.left;
+    // const top = rect.top;
+
+    menuX.value = rect.left;
+    menuY.value = rect.top + 40;
     // showMenu.value = true;
     showMenu.value = !showMenu.value;
-    // console.log('event', event)
 };
+
 const outsideContextMenu = () => {
     if (showMenu.value = true) {
         showMenu.value = false;
@@ -80,7 +94,7 @@ const outsideContextMenu = () => {
             <font-awesome-icon :icon="['fas', 'right-to-bracket']" class="log-in-icon" />Log in
         </div>
         <div v-else v-click-outside="outsideContextMenu">
-            <div @click="showContextMenu" class="user-nav">
+            <div @click="showContextMenu" class="user-nav" ref="userRef">
                 <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
                 <span>{{ authStore.user?.username }}</span>
                 <font-awesome-icon :icon="['fas', 'angle-down']" />
@@ -101,7 +115,7 @@ const outsideContextMenu = () => {
 <style scoped>
 .navbar {
     position: sticky;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     height: var(--navbar-height);
