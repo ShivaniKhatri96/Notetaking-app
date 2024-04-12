@@ -15,7 +15,6 @@
 - Be accessible from a public url
 - Fix bug related to context menu I created. It tends to overflow from the window
 - Navigation bar for mobile version: different style basically
-  > I will be working on these on `version2` branch during my free time
 
 ### Tools used
 
