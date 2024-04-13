@@ -10,7 +10,7 @@ const handleMenu = () => {
     <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu">
     </div>
     <div :class="`menu-background ${isMenuOpen ? 'menu-open' : ''}`">
-        <div>
+        <div class="menu">
             hello
         </div>
     </div>
@@ -76,14 +76,23 @@ const handleMenu = () => {
     z-index: 0;
     width: 100%;
     height: 100%;
-    transform: translate(100%);
-    transition: transform ease-in-out 0.8s;
+    /* transform: translate(100%); 
+   transition: transform 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940); */
+    opacity: 0;
+    transition: 0.5 cubic-bezier(0.390, 0.575, 0.565, 1.000);
+}
+
+
+.menu {
+    width: 100%;
+    height: 500px;
+    background-color: var(--white);
 }
 
 .menu-open {
-    transform: translateX(0);
+    /* transform: translateX(0); */
+    opacity: 1;
 }
-
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
