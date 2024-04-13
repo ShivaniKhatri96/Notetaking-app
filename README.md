@@ -7,6 +7,7 @@
 ### Update completed
 
 - Navigation bar context menu issue fixed
+- Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
 
 ### Currently working on
 
@@ -62,6 +63,7 @@
 - [css-box-shadow-examples](https://getcssscan.com/css-box-shadow-examples) used for Box-shadow
 - [font awesome](https://fontawesome.com/) used for icons
 - [Microsoft copilot](https://copilot.microsoft.com/) used to generate animated drawings
+- [animista](https://animista.net/), CSS animations library, used for animations
 
 ### Final Notes
 
