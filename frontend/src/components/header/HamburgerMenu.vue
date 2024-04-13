@@ -9,6 +9,11 @@ const handleMenu = () => {
 <template>
     <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu">
     </div>
+    <div :class="`menu-background ${isMenuOpen ? 'menu-open' : ''}`">
+        <div>
+            hello
+        </div>
+    </div>
 </template>
 <style scoped>
 /* Medium devices (tablets, less than 992px) */
@@ -58,6 +63,27 @@ const handleMenu = () => {
         transform: rotate(-135deg);
     }
 }
+
+/* menu */
+.menu-background {
+    position: fixed;
+    display: block;
+    top: var(--navbar-height);
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate(100%);
+    transition: transform ease-in-out 0.8s;
+}
+
+.menu-open {
+    transform: translateX(0);
+}
+
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
