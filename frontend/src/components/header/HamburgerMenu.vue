@@ -26,7 +26,7 @@ const handleMenu = () => {
         width: 25px;
         height: 2px;
         background-color: var(--light-gray);
-        transition: transform 0.4s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
     .hamburger {
@@ -82,11 +82,10 @@ const handleMenu = () => {
     transition: 0.5 cubic-bezier(0.390, 0.575, 0.565, 1.000);
 }
 
-
 .menu {
     width: 100%;
     height: 500px;
-    background-color: var(--white);
+    background-color: var(--lighter-gray);
 }
 
 .menu-open {
