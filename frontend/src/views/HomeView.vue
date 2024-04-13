@@ -46,10 +46,9 @@ onMounted(async () => {
 .home {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
   gap: 3rem;
   padding: 2rem;
-  min-height: calc(100vh - var(--navbar-height));
+  height: calc(100vh - var(--navbar-height));
+  overflow: auto;
 }
 </style>

@@ -68,7 +68,7 @@ const handleMyNotes = () => {
 // };
 const showContextMenu = () => {
     const rect = userRef.value.getBoundingClientRect();
-    menuX.value = rect.left;
+    menuX.value = window.innerWidth - rect.right;
     menuY.value = rect.top + 40;
     showMenu.value = !showMenu.value;
 };
