@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 
-const { user, logout } = useAuthStore();
+const authStore = useAuthStore();
 const router = useRouter();
 const showMenu = ref(false);
 const menuX = ref(0);
@@ -19,7 +19,7 @@ const handleMyNotes = () => {
 const handleLogoutClick = () => {
     localStorage.removeItem('noteworthyToken');
     localStorage.removeItem('noteworthyUser');
-    logout()
+    authStore.logout()
     showMenu.value = false;
     router.push('/welcome');
 }
@@ -50,7 +50,8 @@ const outsideContextMenu = () => {
     <div v-click-outside="outsideContextMenu" class="user-menu">
         <div @click="showContextMenu" class="user-nav" ref="userRef">
             <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
-            <span>{{ user?.username }}</span>
+            <!-- this format authStore.user is necessary here because destructuring doesn't update-->
+            <span>{{ authStore.user?.username }}</span>
             <font-awesome-icon :icon="['fas', 'angle-down']" />
         </div>
         <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
