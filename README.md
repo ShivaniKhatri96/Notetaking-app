@@ -4,9 +4,13 @@
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
 
+### Update completed
+
+- Navigation bar context menu issue fixed
+
 ### Currently working on
 
-- Fixing navigation bar context menu issue
+- Navigation bar for mobile version
 
 ### Things I want to add and improve in version 2
 
