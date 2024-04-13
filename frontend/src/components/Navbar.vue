@@ -128,7 +128,7 @@ const outsideContextMenu = () => {
 }
 
 .logo:hover {
-    animation: heartbeat 1.5s ease-in-out infinite both;
+    animation: heartbeat 1.5s ease-in-out both;
 }
 
 @keyframes heartbeat {
