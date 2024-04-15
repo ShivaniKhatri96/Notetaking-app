@@ -9,7 +9,7 @@ const handleMenu = () => {
 <template>
     <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu">
     </div>
-    <div :class="`menu-background ${isMenuOpen ? 'menu-open' : ''}`">
+    <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`">
         <div class="menu">
             hello
         </div>
@@ -67,19 +67,23 @@ const handleMenu = () => {
 /* menu */
 .menu-background {
     position: fixed;
-    display: block;
+    visibility: hidden;
     top: var(--navbar-height);
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
-    z-index: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
-    /* transform: translate(100%); 
-   transition: transform 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940); */
     opacity: 0;
-    transition: 0.5 cubic-bezier(0.390, 0.575, 0.565, 1.000);
+    transition: 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+}
+
+.menu-background-open {
+    visibility: visible;
+    opacity: 1;
+    z-index: 100;
 }
 
 .menu {
@@ -88,14 +92,14 @@ const handleMenu = () => {
     background-color: var(--lighter-gray);
 }
 
-.menu-open {
-    /* transform: translateX(0); */
-    opacity: 1;
-}
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .hamburger {
+        display: none;
+    }
+
+    .menu-background {
         display: none;
     }
 }
