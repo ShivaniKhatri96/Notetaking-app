@@ -1,5 +1,8 @@
 <script setup>
 import { ref, watchEffect } from "vue";
+import { useAuthStore } from '@/stores/auth';
+
+const authStore = useAuthStore();
 const menuRef = ref(null);
 const iconRef = ref(null);
 const isMenuOpen = ref(false)
@@ -29,7 +32,15 @@ watchEffect(() => {
     </div>
     <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`">
         <div class="menu" ref="menuRef">
-            hello
+            menu
+            <!-- <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
+            <span>{{ authStore.user?.username }}</span>
+            <div @click="handleMyNotes" class="context-menu-item">
+                <font-awesome-icon :icon="['fas', 'user']" /> My notes
+            </div>
+            <div @click="handleLogoutClick" class="context-menu-item">
+                <font-awesome-icon :icon="['fas', 'right-from-bracket']" /> Log out
+            </div> -->
         </div>
     </div>
 </template>
