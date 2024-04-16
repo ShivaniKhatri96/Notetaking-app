@@ -1,19 +1,17 @@
 <script setup>
-import { ref, watch, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 const menuRef = ref(null);
-const menuBgRef = ref(null);
+const iconRef = ref(null);
 const isMenuOpen = ref(false)
 const handleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
-    console.log('one', isMenuOpen.value)
 }
 
 const outSideMenu = (e) => {
-    // if statement works only when clicked 'outside menu' but within 'menu background'
+    // if statement works only when clicked 'outside menu' but not including 'hamburger menu icon'
     // this helps to separate  mousedown and @click to avoid the bug related to not closing
-    if (isMenuOpen.value && menuRef.value && !menuRef.value.contains(e.target) && menuBgRef.value && menuBgRef.value.contains(e.target)) {
+    if (isMenuOpen.value && menuRef.value && !menuRef.value.contains(e.target) && iconRef.value && !iconRef.value.contains(e.target)) {
         isMenuOpen.value = false;
-        console.log('two', isMenuOpen.value)
     }
 };
 
@@ -27,9 +25,9 @@ watchEffect(() => {
 
 </script>
 <template>
-    <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu">
+    <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu" ref="iconRef">
     </div>
-    <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`" ref="menuBgRef">
+    <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`">
         <div class="menu" ref="menuRef">
             hello
         </div>
