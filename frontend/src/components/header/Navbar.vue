@@ -5,6 +5,11 @@ import { RouterLink } from 'vue-router';
 import { watch } from 'vue';
 import UserMenu from './UserMenu.vue';
 import HamburgerMenu from './HamburgerMenu.vue';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
+const router = useRouter();
+const showMenu = ref(false);
 
 const store = useStore();
 const authStore = useAuthStore();
@@ -13,6 +18,26 @@ const handleLoginClick = () => {
     //toggle
     store.isLoginClick = true;
 }
+
+const navOptions = [{ name: 'My notes', route: '/my-notes', icon: 'user' }, { name: 'Log out', route: '/welcome', icon: 'right-from-bracket' }];
+
+const handleNav = (route) => {
+    // for log out
+    if (route === '/welcome') {
+        localStorage.removeItem('noteworthyToken');
+        localStorage.removeItem('noteworthyUser');
+        authStore.logout()
+        // router.push('/welcome');
+    }
+    //for all routes
+    router.push(route);
+    showMenu.value = false;
+}
+
+const updateShowMenu = () => {
+    showMenu.value = !showMenu.value;
+}
+
 
 //The arrow function '() => authStore.token' is evaluated every time the authStore.token property changes
 watch(() => authStore.token, async () => {
@@ -38,7 +63,7 @@ watch(() => authStore.token, async () => {
         }
     }
 })
-
+console.log('authStore.token', authStore.token)
 </script>
 
 <template>
@@ -53,7 +78,8 @@ watch(() => authStore.token, async () => {
             <!-- for larger screen sizes -->
             <UserMenu />
             <!-- for mobile versions -->
-            <HamburgerMenu />
+            <HamburgerMenu :handleNav="handleNav" :navOptions="navOptions" :showMenu="showMenu"
+                :updateShowMenu="updateShowMenu" />
         </div>
     </header>
 </template>
