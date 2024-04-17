@@ -39,12 +39,14 @@ watchEffect(() => {
     </div>
     <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`">
         <div class="menu" ref="menuRef">
-            <div class="current-user">
+            <div class="current-user" @click="handleNav('/my-notes'); handleMenu()">
                 <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
                 <span>{{ authStore.user?.username }}</span>
             </div>
-            <div v-for="option in navOptions" :key="option.name" @click="handleNav(option.route); handleMenu()">
-                <font-awesome-icon :icon="['fas', `${option.icon}`]" /> {{ option.name }}
+            <div v-for="option in navOptions" :key="option.name" @click="handleNav(option.route); handleMenu()"
+                class="nav-options">
+                <font-awesome-icon :icon="['fas', `${option.icon}`]" />
+                <span>{{ option.name }}</span>
             </div>
         </div>
     </div>
@@ -118,7 +120,6 @@ watchEffect(() => {
     visibility: visible;
     opacity: 1;
     z-index: 0;
-    /* z-index: 100; */
 }
 
 .menu {
@@ -127,16 +128,28 @@ watchEffect(() => {
     padding: 2rem;
     gap: 0.5rem;
     width: 100%;
-    /* height: 500px; */
-    background-color: var(--lighter-gray);
+    background-color: var(--white);
+    border-top: solid 2px var(--lighter-gray);
 }
 
 .current-user {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    padding: 1rem;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.user-icon {
+    font-size: 4rem;
+    color: var(--pink);
+}
+
+.nav-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Large devices (desktops, 992px and up) */
