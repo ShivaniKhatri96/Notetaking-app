@@ -6,7 +6,7 @@
 
 ### Recent updates
 
-- Navigation bar context menu issue fixed
+- Navigation bar context menu (for large screens) issue fixed
 - Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
 
 ### Currently working on
