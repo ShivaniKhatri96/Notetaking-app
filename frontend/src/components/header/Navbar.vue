@@ -6,11 +6,8 @@ import { watch } from 'vue';
 import UserMenu from './UserMenu.vue';
 import HamburgerMenu from './HamburgerMenu.vue';
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
 
 const router = useRouter();
-const showMenu = ref(false);
-
 const store = useStore();
 const authStore = useAuthStore();
 
@@ -27,17 +24,10 @@ const handleNav = (route) => {
         localStorage.removeItem('noteworthyToken');
         localStorage.removeItem('noteworthyUser');
         authStore.logout()
-        // router.push('/welcome');
     }
     //for all routes
     router.push(route);
-    showMenu.value = false;
 }
-
-const updateShowMenu = () => {
-    showMenu.value = !showMenu.value;
-}
-
 
 //The arrow function '() => authStore.token' is evaluated every time the authStore.token property changes
 watch(() => authStore.token, async () => {
@@ -63,7 +53,6 @@ watch(() => authStore.token, async () => {
         }
     }
 })
-console.log('authStore.token', authStore.token)
 </script>
 
 <template>
@@ -76,10 +65,9 @@ console.log('authStore.token', authStore.token)
         </div>
         <div v-else>
             <!-- for larger screen sizes -->
-            <UserMenu />
+            <UserMenu :handleNav="handleNav" :navOptions="navOptions" />
             <!-- for mobile versions -->
-            <HamburgerMenu :handleNav="handleNav" :navOptions="navOptions" :showMenu="showMenu"
-                :updateShowMenu="updateShowMenu" />
+            <HamburgerMenu :handleNav="handleNav" :navOptions="navOptions" />
         </div>
     </header>
 </template>

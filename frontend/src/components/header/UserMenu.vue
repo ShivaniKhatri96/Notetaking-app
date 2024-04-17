@@ -1,27 +1,24 @@
 <script setup>
 import ContextMenu from '../ContextMenu.vue';
-import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 
+const props = defineProps({
+    handleNav: Function,
+    navOptions: {
+        type: Array,
+        required: true,
+    },
+})
+
 const authStore = useAuthStore();
-const router = useRouter();
 const showMenu = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
 const userRef = ref(null);
 
-const handleMyNotes = () => {
+const handleClose = () => {
     showMenu.value = false;
-    router.push('/my-notes');
-}
-
-const handleLogoutClick = () => {
-    localStorage.removeItem('noteworthyToken');
-    localStorage.removeItem('noteworthyUser');
-    authStore.logout()
-    showMenu.value = false;
-    router.push('/welcome');
 }
 
 // const showContextMenu = (event) => {
@@ -41,8 +38,8 @@ const showContextMenu = () => {
 };
 
 const outsideContextMenu = () => {
-    if (showMenu.value = true) {
-        showMenu.value = false;
+    if (showMenu.value) {
+        handleClose()
     }
 }
 </script>
@@ -55,11 +52,9 @@ const outsideContextMenu = () => {
             <font-awesome-icon :icon="['fas', 'angle-down']" />
         </div>
         <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
-            <div @click="handleMyNotes" class="context-menu-item">
-                <font-awesome-icon :icon="['fas', 'user']" /> My notes
-            </div>
-            <div @click="handleLogoutClick" class="context-menu-item">
-                <font-awesome-icon :icon="['fas', 'right-from-bracket']" /> Log out
+            <div v-for="option in navOptions" class="context-menu-item" :key="option.name"
+                @click="handleNav(option.route); handleClose();">
+                <font-awesome-icon :icon="['fas', `${option.icon}`]" /> {{ option.name }}
             </div>
         </ContextMenu>
     </div>

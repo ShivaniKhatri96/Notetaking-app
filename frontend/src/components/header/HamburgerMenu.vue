@@ -2,32 +2,26 @@
 import { ref, watchEffect } from "vue";
 import { useAuthStore } from '@/stores/auth';
 
-const props = defineProps({
+defineProps({
     handleNav: Function,
     navOptions: {
         type: Array,
         required: true,
-    },
-    showMenu: {
-        type: Boolean,
-    },
-    updateShowMenu: Function
+    }
 })
-console.log('showMenu', props.showMenu)
 const authStore = useAuthStore();
 const menuRef = ref(null);
 const iconRef = ref(null);
-// const showMenu = ref(false)
-// const handleMenu = () => {
-//     showMenu.value = !showMenu.value;
-// }
+const isMenuOpen = ref(false)
+const handleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value;
+}
 
 const outSideMenu = (e) => {
     // if statement works only when clicked 'outside menu' but not including 'hamburger menu icon'
     // this helps to separate  mousedown and @click to avoid the bug related to not closing
-    if (props.showMenu && menuRef.value && !menuRef.value.contains(e.target) && iconRef.value && !iconRef.value.contains(e.target)) {
-        // showMenu.value = false;
-        props.updateShowMenu()
+    if (isMenuOpen.value && menuRef.value && !menuRef.value.contains(e.target) && iconRef.value && !iconRef.value.contains(e.target)) {
+        isMenuOpen.value = false;
     }
 };
 
@@ -41,13 +35,13 @@ watchEffect(() => {
 
 </script>
 <template>
-    <div :class="`hamburger ${showMenu ? 'hamburger-on' : ''}`" @click="updateShowMenu" ref="iconRef">
+    <div :class="`hamburger ${isMenuOpen ? 'hamburger-on' : ''}`" @click="handleMenu" ref="iconRef">
     </div>
-    <div :class="`menu-background ${showMenu ? 'menu-background-open' : ''}`">
+    <div :class="`menu-background ${isMenuOpen ? 'menu-background-open' : ''}`">
         <div class="menu" ref="menuRef">
             <font-awesome-icon :icon="['fas', 'circle-user']" class="user-icon" />
             <span>{{ authStore.user?.username }}</span>
-            <div v-for="option in navOptions" :key="option.name" @click="handleNav(option.route)">
+            <div v-for="option in navOptions" :key="option.name" @click="handleNav(option.route); handleMenu()">
                 <font-awesome-icon :icon="['fas', `${option.icon}`]" /> {{ option.name }}
             </div>
         </div>
