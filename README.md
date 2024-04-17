@@ -8,10 +8,16 @@
 
 - Navigation bar context menu (for large screens) issue fixed
 - Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
+- Navigation bar for mobile version
 
 ### Currently working on
 
-- Navigation bar for mobile version
+- Adding context menu to note card to show options for editing and deleting
+
+### Next I will work on
+
+- Adding a modal to show edit mode instead of editing inside the card itself
+- Then I will work on: Allow a note's creator to make it private
 
 ### Things I want to add and improve in version 2
 
