@@ -1,5 +1,5 @@
 # Noteworthy: A Notetaking-app: V2
-
+ *finally back to this project after a short break*
 ## I will add version 2 updates in this branch
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
