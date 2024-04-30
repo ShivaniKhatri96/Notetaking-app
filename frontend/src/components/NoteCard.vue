@@ -3,7 +3,7 @@ import { ref, watch } from "vue";
 import ContextMenu from './ContextMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
-
+import EditNoteCard from "./EditNoteCard.vue";
 const props = defineProps({
     noteId: {
         type: String,
@@ -28,7 +28,7 @@ const props = defineProps({
 })
 const { token, user } = useAuthStore();
 const { notes, removeNotes, updateNotes } = useNotesStore();
-
+const isEditMode = ref(false);
 const showMenu = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
@@ -61,46 +61,10 @@ const handleDeleteNote = async (noteId) => {
     }
 }
 
-const isEditMode = ref(false);
 const handleEditMode = () => {
+    showMenu.value = false;
     isEditMode.value = true;
 }
-
-const updateNote = ref({
-    title: props?.title,
-    content: props?.content
-});
-
-const handleSave = async (noteId) => {
-    const { title, content } = updateNote.value;
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", token);
-    try {
-        const response = await fetch(`http://localhost:8000/api/notes/${noteId}`, {
-            method: "PUT",
-            body: JSON.stringify({
-                title,
-                content,
-            }),
-            headers: myHeaders,
-        })
-        if (response.ok) {
-            updateNotes(noteId, title, content);
-            isEditMode.value = false;
-        }
-    } catch (error) {
-        console.log('error', error);
-    }
-};
-
-const handleCancel = () => {
-    updateNote.value.title = props?.title;
-    updateNote.value.content = props?.content;
-    isEditMode.value = false;
-};
-
-
 </script>
 <template>
     <div class="card">
@@ -121,34 +85,12 @@ const handleCancel = () => {
                 </div>
                 <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                     <div class="context-menu-item" @click="handleDeleteNote(noteId)">Delete note</div>
-                    <div class="context-menu-item">Edit note</div>
+                    <div class="context-menu-item" @click="handleEditMode">Edit note</div>
                     <div class="context-menu-item">Turn private</div>
                 </ContextMenu>
             </div>
-            <!-- <div v-if="noteCreatorId === user?.userId">
-                <div class="flex-row" v-if="isEditMode">
-                    <button class="note-icon-button" @click="handleSave(noteId)"
-                        :disabled="!updateNote.content.length"><font-awesome-icon :icon="['fas', 'floppy-disk']" />
-                        Save</button>
-                    <button class="note-icon-button" @click="handleCancel">Cancel</button>
-                </div>
-                <div class="flex-row" v-else>
-                    <button class="note-icon-button" @click="handleEditMode"><font-awesome-icon
-                            :icon="['fas', 'pen-to-square']" /> Edit</button>
-                    <button class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
-                            :icon="['fas', 'trash-can']" /> Delete</button>
-                </div>
-            </div> -->
+            <EditNoteCard :isEditMode="isEditMode" :noteId="noteId" :title="title" :content="content" />
         </div>
-        <!-- <div class="content-box" v-if="isEditMode">
-            <input class="update-note-input" type="text" placeholder="Title" v-model="updateNote.title" />
-            <textarea @click="handleClick" class="update-note-input" rows="13" placeholder="Take a note..."
-                v-model="updateNote.content"></textarea>
-        </div>
-        <div class="content-box" v-else>
-            <div class="note-title">{{ title }}</div>
-            <div>{{ content }}</div>
-        </div> -->
         <div class="content-box">
             <div class="note-title">{{ title }}</div>
             <div>{{ content }}</div>
@@ -248,19 +190,6 @@ const handleCancel = () => {
     font-weight: 600;
 }
 
-.update-note-input {
-    width: 100%;
-    border: none;
-    border-radius: 4px;
-    background-color: var(--lighter-gray);
-    padding: 0.5rem;
-}
-
-.update-note-input:focus {
-    outline: none;
-}
-
-/* update */
 .ellipsis-box {
     position: relative;
 }
