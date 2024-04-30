@@ -3,8 +3,7 @@ import { ref, watch } from "vue";
 import ContextMenu from './ContextMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
-const { token, user } = useAuthStore();
-const { notes, removeNotes, updateNotes } = useNotesStore();
+
 const props = defineProps({
     noteId: {
         type: String,
@@ -27,6 +26,23 @@ const props = defineProps({
         required: true,
     }
 })
+const { token, user } = useAuthStore();
+const { notes, removeNotes, updateNotes } = useNotesStore();
+
+const showMenu = ref(false);
+const menuX = ref(0);
+const menuY = ref(0);
+
+const handleContextMenu = () => {
+    menuX.value = 5;
+    menuY.value = 28;
+    showMenu.value = !showMenu.value;
+}
+const outsideContextMenu = () => {
+    if (showMenu.value) {
+        showMenu.value = false;
+    }
+}
 
 const handleDeleteNote = async (noteId) => {
     const myHeaders = new Headers();
@@ -38,6 +54,7 @@ const handleDeleteNote = async (noteId) => {
         });
         if (response.ok) {
             removeNotes(noteId)
+            showMenu.value = false;
         }
     } catch (error) {
         console.log('error', error);
@@ -83,20 +100,7 @@ const handleCancel = () => {
     isEditMode.value = false;
 };
 
-const showMenu = ref(false);
-const menuX = ref(0);
-const menuY = ref(0);
 
-const handleContextMenu = () => {
-    menuX.value = 5;
-    menuY.value = 28;
-    showMenu.value = !showMenu.value;
-}
-const outsideContextMenu = () => {
-    if (showMenu.value) {
-        showMenu.value = false;
-    }
-}
 </script>
 <template>
     <div class="card">
@@ -116,7 +120,7 @@ const outsideContextMenu = () => {
                     <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
                 </div>
                 <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
-                    <div class="context-menu-item">Delete note</div>
+                    <div class="context-menu-item" @click="handleDeleteNote(noteId)">Delete note</div>
                     <div class="context-menu-item">Edit note</div>
                     <div class="context-menu-item">Turn private</div>
                 </ContextMenu>
