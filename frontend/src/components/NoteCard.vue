@@ -86,15 +86,17 @@ const handleCancel = () => {
 const showMenu = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
-const ellipsisRef = ref(null);
 
 const handleContextMenu = () => {
-    const rect = ellipsisRef.value.getBoundingClientRect();
-    menuX.value = window.innerWidth - rect.right;
-    menuY.value = rect.top + 28;
+    menuX.value = 5;
+    menuY.value = 28;
     showMenu.value = !showMenu.value;
 }
-
+const outsideContextMenu = () => {
+    if (showMenu.value) {
+        showMenu.value = false;
+    }
+}
 </script>
 <template>
     <div class="card">
@@ -109,23 +111,14 @@ const handleContextMenu = () => {
                     </div>
                 </div>
             </div>
-            <div v-if="noteCreatorId === user?.userId">
-                <div @click="handleContextMenu" class="ellipsis" ref="ellipsisRef">
+            <div v-if="noteCreatorId === user?.userId" v-click-outside="outsideContextMenu" class="ellipsis-box">
+                <div @click="handleContextMenu" class="ellipsis">
                     <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
                 </div>
                 <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                     <div class="context-menu-item">Delete note</div>
                     <div class="context-menu-item">Edit note</div>
-                    <div class="context-menu-item"> Turn Private</div>
-                    <!-- <button class="note-icon-button" @click="handleEditMode">
-                            <font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</button>
-                        <button class="note-icon-button" @click="handleDeleteNote(noteId)">
-                            <font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</button> -->
-
-                    <!-- <div v-for="option in navOptions" class="context-menu-item" :key="option.name"
-                        @click="handleNav(option.route); handleClose();">
-                        <font-awesome-icon :icon="['fas', `${option.icon}`]" /> {{ option.name }}
-                    </div> -->
+                    <div class="context-menu-item">Turn private</div>
                 </ContextMenu>
             </div>
             <!-- <div v-if="noteCreatorId === user?.userId">
@@ -264,6 +257,10 @@ const handleContextMenu = () => {
 }
 
 /* update */
+.ellipsis-box {
+    position: relative;
+}
+
 .ellipsis {
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
