@@ -21,15 +21,6 @@ const handleClose = () => {
     showMenu.value = false;
 }
 
-// const showContextMenu = (event) => {
-//     event.preventDefault();
-//     console.log('event', event)
-//     menuX.value = event.clientX;
-//     menuY.value = event.clientY;
-//     // showMenu.value = true;
-//     showMenu.value = !showMenu.value;
-//     // console.log('event', event)
-// };
 const showContextMenu = () => {
     const rect = userRef.value.getBoundingClientRect();
     menuX.value = window.innerWidth - rect.right;

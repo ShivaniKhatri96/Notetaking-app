@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
+import ContextMenu from './ContextMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 const { token, user } = useAuthStore();
@@ -82,10 +83,18 @@ const handleCancel = () => {
     isEditMode.value = false;
 };
 
-const handleContextMenu = () => {
-    console.log('fdsaf')
+const showMenu = ref(false);
+const menuX = ref(0);
+const menuY = ref(0);
+const ellipsisRef = ref(null);
 
+const handleContextMenu = () => {
+    const rect = ellipsisRef.value.getBoundingClientRect();
+    menuX.value = window.innerWidth - rect.right;
+    menuY.value = rect.top + 28;
+    showMenu.value = !showMenu.value;
 }
+
 </script>
 <template>
     <div class="card">
@@ -100,8 +109,24 @@ const handleContextMenu = () => {
                     </div>
                 </div>
             </div>
-            <div v-if="noteCreatorId === user?.userId" @click="handleContextMenu" class="ellipsis">
-                <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
+            <div v-if="noteCreatorId === user?.userId">
+                <div @click="handleContextMenu" class="ellipsis" ref="ellipsisRef">
+                    <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
+                </div>
+                <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
+                    <div class="context-menu-item">Delete note</div>
+                    <div class="context-menu-item">Edit note</div>
+                    <div class="context-menu-item"> Turn Private</div>
+                    <!-- <button class="note-icon-button" @click="handleEditMode">
+                            <font-awesome-icon :icon="['fas', 'pen-to-square']" /> Edit</button>
+                        <button class="note-icon-button" @click="handleDeleteNote(noteId)">
+                            <font-awesome-icon :icon="['fas', 'trash-can']" /> Delete</button> -->
+
+                    <!-- <div v-for="option in navOptions" class="context-menu-item" :key="option.name"
+                        @click="handleNav(option.route); handleClose();">
+                        <font-awesome-icon :icon="['fas', `${option.icon}`]" /> {{ option.name }}
+                    </div> -->
+                </ContextMenu>
             </div>
             <!-- <div v-if="noteCreatorId === user?.userId">
                 <div class="flex-row" v-if="isEditMode">
