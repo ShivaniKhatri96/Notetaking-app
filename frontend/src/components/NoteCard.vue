@@ -81,6 +81,11 @@ const handleCancel = () => {
     updateNote.value.content = props?.content;
     isEditMode.value = false;
 };
+
+const handleContextMenu = () => {
+    console.log('fdsaf')
+
+}
 </script>
 <template>
     <div class="card">
@@ -95,7 +100,10 @@ const handleCancel = () => {
                     </div>
                 </div>
             </div>
-            <div v-if="noteCreatorId === user?.userId">
+            <div v-if="noteCreatorId === user?.userId" @click="handleContextMenu" class="ellipsis">
+                <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
+            </div>
+            <!-- <div v-if="noteCreatorId === user?.userId">
                 <div class="flex-row" v-if="isEditMode">
                     <button class="note-icon-button" @click="handleSave(noteId)"
                         :disabled="!updateNote.content.length"><font-awesome-icon :icon="['fas', 'floppy-disk']" />
@@ -108,14 +116,18 @@ const handleCancel = () => {
                     <button class="note-icon-button" @click="handleDeleteNote(noteId)"><font-awesome-icon
                             :icon="['fas', 'trash-can']" /> Delete</button>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="content-box" v-if="isEditMode">
+        <!-- <div class="content-box" v-if="isEditMode">
             <input class="update-note-input" type="text" placeholder="Title" v-model="updateNote.title" />
             <textarea @click="handleClick" class="update-note-input" rows="13" placeholder="Take a note..."
                 v-model="updateNote.content"></textarea>
         </div>
         <div class="content-box" v-else>
+            <div class="note-title">{{ title }}</div>
+            <div>{{ content }}</div>
+        </div> -->
+        <div class="content-box">
             <div class="note-title">{{ title }}</div>
             <div>{{ content }}</div>
         </div>
@@ -224,5 +236,16 @@ const handleCancel = () => {
 
 .update-note-input:focus {
     outline: none;
+}
+
+/* update */
+.ellipsis {
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+}
+
+.ellipsis:hover {
+    background-color: var(--white-10);
+    cursor: pointer;
 }
 </style>
