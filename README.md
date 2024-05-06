@@ -9,10 +9,12 @@
 - Navigation bar context menu (for large screens) issue fixed
 - Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
 - Navigation bar for mobile version
+- context menu added to note card to show options for editing, deleting and turn (note) private
+- Edit now happens inside a modal instead of in the note card itself
 
 ### Currently working on
 
-- Adding context menu to note card to show options for editing and deleting
+- updating button style for save and cancel button
 
 ### Next I will work on
 
