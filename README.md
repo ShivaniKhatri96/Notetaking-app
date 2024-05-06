@@ -14,6 +14,7 @@
 
 ### Currently working on
 
+- Make edit modal responsive
 - Allow a note's creator to make it private
 
 ### Next I will work on
