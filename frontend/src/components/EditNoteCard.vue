@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { useNotesStore } from '@/stores/notesStore';
 import { useStore } from "@/stores/store";
 import { useAuthStore } from '@/stores/auth';
@@ -52,11 +52,25 @@ const handleCancel = () => {
     updateNote.value.content = props?.content;
     store.editMode = ''
 };
+const editModalRef = ref(null)
+const handleClickOutside = (e) => {
+    if (store.editMode === props.noteId && editModalRef.value && !editModalRef.value.contains(e.target)) {
+        handleCancel()
+    }
+};
+
+watchEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    // Clean up function before running new effect
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+});
 </script>
 
 <template>
     <div class="edit-note-background" v-if="store.editMode === noteId">
-        <div class="edit-note-modal" ref="loginModalRef">
+        <div class="edit-note-modal" ref="editModalRef">
             <input class="update-note-input" type="text" placeholder="Title" v-model="updateNote.title" />
             <textarea class="update-note-input" rows="25" placeholder="Take a note..."
                 v-model="updateNote.content"></textarea>
