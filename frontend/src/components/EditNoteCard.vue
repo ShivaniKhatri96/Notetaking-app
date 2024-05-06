@@ -75,10 +75,10 @@ watchEffect(() => {
             <textarea class="update-note-input" rows="25" placeholder="Take a note..."
                 v-model="updateNote.content"></textarea>
             <div class="flex-row">
-                <button class="note-icon-button" @click="handleSave(noteId)"
+                <button class="btn green-btn" @click="handleSave(noteId)"
                     :disabled="!updateNote.content.length"><font-awesome-icon :icon="['fas', 'floppy-disk']" />
                     Save</button>
-                <button class="note-icon-button" @click="handleCancel">Cancel</button>
+                <button class="btn black-btn" @click="handleCancel">Cancel</button>
             </div>
         </div>
     </div>
@@ -129,8 +129,8 @@ watchEffect(() => {
 
 .flex-row {
     display: flex;
-    gap: 0.5rem;
-    align-items: center;
+    gap: 0.6rem;
+    justify-content: end;
 }
 
 .update-note-input {

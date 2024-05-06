@@ -14,12 +14,11 @@
 
 ### Currently working on
 
-- updating button style for save and cancel button
+- Allow a note's creator to make it private
 
 ### Next I will work on
 
-- Adding a modal to show edit mode instead of editing inside the card itself
-- Then I will work on: Allow a note's creator to make it private
+- Be accessible from a public url
 
 ### Things I want to add and improve in version 2
 
