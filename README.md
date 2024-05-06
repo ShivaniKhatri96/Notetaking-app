@@ -85,3 +85,7 @@
 #### Frontend
 
 > `npm run dev`
+
+#### Accounts
+> There is no sign up but you can login using 3 different accounts:
+Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1
