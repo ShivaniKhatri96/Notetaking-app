@@ -1,9 +1,10 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import ContextMenu from './ContextMenu.vue';
 import { useAuthStore } from '@/stores/auth';
 import { useNotesStore } from '@/stores/notesStore';
 import EditNoteCard from "./EditNoteCard.vue";
+import { useStore } from "@/stores/store";
 const props = defineProps({
     noteId: {
         type: String,
@@ -27,8 +28,8 @@ const props = defineProps({
     }
 })
 const { token, user } = useAuthStore();
-const { notes, removeNotes, updateNotes } = useNotesStore();
-const isEditMode = ref(false);
+const { removeNotes } = useNotesStore();
+const store = useStore();
 const showMenu = ref(false);
 const menuX = ref(0);
 const menuY = ref(0);
@@ -61,9 +62,9 @@ const handleDeleteNote = async (noteId) => {
     }
 }
 
-const handleEditMode = () => {
+const handleEditMode = (noteId) => {
     showMenu.value = false;
-    isEditMode.value = true;
+    store.editMode = noteId
 }
 </script>
 <template>
@@ -85,11 +86,11 @@ const handleEditMode = () => {
                 </div>
                 <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                     <div class="context-menu-item" @click="handleDeleteNote(noteId)">Delete note</div>
-                    <div class="context-menu-item" @click="handleEditMode">Edit note</div>
+                    <div class="context-menu-item" @click="handleEditMode(noteId)">Edit note</div>
                     <div class="context-menu-item">Turn private</div>
                 </ContextMenu>
             </div>
-            <EditNoteCard :isEditMode="isEditMode" :noteId="noteId" :title="title" :content="content" />
+            <EditNoteCard :noteId="noteId" :title="title" :content="content" />
         </div>
         <div class="content-box">
             <div class="note-title">{{ title }}</div>

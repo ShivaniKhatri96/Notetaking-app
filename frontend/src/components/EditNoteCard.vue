@@ -1,11 +1,9 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useNotesStore } from '@/stores/notesStore';
+import { useStore } from "@/stores/store";
+import { useAuthStore } from '@/stores/auth';
 const props = defineProps({
-    isEditMode: {
-        type: Boolean,
-        required: true,
-    },
     noteId: {
         type: String,
         required: true,
@@ -19,7 +17,9 @@ const props = defineProps({
         required: true,
     }
 })
-const { notes, removeNotes, updateNotes } = useNotesStore();
+const { token } = useAuthStore();
+const { updateNotes } = useNotesStore();
+const store = useStore();
 const updateNote = ref({
     title: props?.title,
     content: props?.content
@@ -40,7 +40,7 @@ const handleSave = async (noteId) => {
         })
         if (response.ok) {
             updateNotes(noteId, title, content);
-            isEditMode.value = false;
+            store.editMode = ''
         }
     } catch (error) {
         console.log('error', error);
@@ -50,12 +50,12 @@ const handleSave = async (noteId) => {
 const handleCancel = () => {
     updateNote.value.title = props?.title;
     updateNote.value.content = props?.content;
-    isEditMode.value = false;
+    store.editMode = ''
 };
 </script>
 
 <template>
-    <div class="edit-note-background" v-if="isEditMode">
+    <div class="edit-note-background" v-if="store.editMode === noteId">
         <div class="edit-note-modal" ref="loginModalRef">
             <input class="update-note-input" type="text" placeholder="Title" v-model="updateNote.title" />
             <textarea class="update-note-input" rows="25" placeholder="Take a note..."
