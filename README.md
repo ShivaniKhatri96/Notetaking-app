@@ -1,6 +1,4 @@
-# Noteworthy: A Notetaking-app: V2
-
-## I will add version 2 updates in this branch
+# Noteworthy: A Notetaking-app
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
 
@@ -16,18 +14,11 @@
 ### Currently working on
 
 - Allow a note's creator to make it private
+ > The idea is to show the private notes in `MyNotesView` page
 
 ### Next I will work on
 
 - Be accessible from a public url
-
-### Things I want to add and improve in version 2
-
-- Allow a note's creator to make it private.
-  > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
-- Be accessible from a public url
-- Fix bug related to context menu I created. It tends to overflow from the window
-- Navigation bar for mobile version: different style basically
 
 ### Tools used
 
@@ -38,14 +29,12 @@
 - `Pinia` used for managing global states
 - `Vanilla CSS` used for styling
 - `Font awesome` used for icons
-  > I didn't use CSS framework because I am working with a new javascript Framework. So, I wanted to keep things as simple as possible to make learning Vue.js smoother.
 
 > Backend
 
 - `Node.js`
 - `Express.js`
 - `MongoDB (cloud)`
-  > I didn't spent too much time on `backend`. So, it might not be perfect. My focus was to make `frontend` better.
 
 ### Responsive Design
 
@@ -63,7 +52,6 @@
 - Created notes are saved and retrieved on next visit
 - It shows which user created a note
 - It allows only note's creator to edit and delete it
-  > Basically, POC and MVP are completed.
 
 ### Links used
 
@@ -88,5 +76,5 @@
 > `npm run dev`
 
 #### Accounts
-> There is no sign up but you can login using 3 different accounts:
+> There is no sign up option but you can log in using 3 different accounts:
 Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1
