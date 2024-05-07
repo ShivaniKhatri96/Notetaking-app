@@ -11,10 +11,10 @@
 - Navigation bar for mobile version
 - context menu added to note card to show options for editing, deleting and turn (note) private
 - Edit now happens inside a modal instead of in the note card itself
+- Make edit modal responsive
 
 ### Currently working on
 
-- Make edit modal responsive
 - Allow a note's creator to make it private
 
 ### Next I will work on

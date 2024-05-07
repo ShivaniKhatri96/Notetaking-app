@@ -87,6 +87,8 @@ watchEffect(() => {
 <style scoped>
 .edit-note-background {
     position: absolute;
+    top: var(--navbar-height);
+    left: 0;
     width: 100%;
     height: 100%;
 }
