@@ -1,6 +1,33 @@
-# Noteworthy: A Notetaking-app
+# Noteworthy: A Notetaking-app: V2
+
+## I will add version 2 updates in this branch
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
+
+### Recent updates
+
+- Navigation bar context menu (for large screens) issue fixed
+- Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
+- Navigation bar for mobile version
+- context menu added to note card to show options for editing, deleting and turn (note) private
+- Edit now happens inside a modal instead of in the note card itself
+- Make edit modal responsive
+
+### Currently working on
+
+- Allow a note's creator to make it private
+
+### Next I will work on
+
+- Be accessible from a public url
+
+### Things I want to add and improve in version 2
+
+- Allow a note's creator to make it private.
+  > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
+- Be accessible from a public url
+- Fix bug related to context menu I created. It tends to overflow from the window
+- Navigation bar for mobile version: different style basically
 
 ### Tools used
 
@@ -38,21 +65,13 @@
 - It allows only note's creator to edit and delete it
   > Basically, POC and MVP are completed.
 
-### Things I want to add and improve in version 2
-
-- Allow a note's creator to make it private.
-  > The idea is to show the private notes in `MyNotesView` page. I will do it in `version2`
-- Be accessible from a public url
-- Fix bug related to context menu I created. It tends to overflow from the window
-- Navigation bar for mobile version: different style basically
-  > I will be working on these on `version2` branch during my free time
-
 ### Links used
 
 - [Adobe express](https://new.express.adobe.com/) used for creating logo
 - [css-box-shadow-examples](https://getcssscan.com/css-box-shadow-examples) used for Box-shadow
 - [font awesome](https://fontawesome.com/) used for icons
 - [Microsoft copilot](https://copilot.microsoft.com/) used to generate animated drawings
+- [animista](https://animista.net/), CSS animations library, used for animations
 
 ### Final Notes
 
@@ -67,3 +86,7 @@
 #### Frontend
 
 > `npm run dev`
+
+#### Accounts
+> There is no sign up but you can login using 3 different accounts:
+Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1

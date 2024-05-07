@@ -23,7 +23,7 @@ const { emit } = defineEmits();
 
 </script>
 <template>
-    <div v-if="showMenu" class="context-menu" :style="{ top: `${menuY}px`, left: `${menuX}px` }">
+    <div v-if="showMenu" class="context-menu" :style="{ top: `${menuY}px`, right: `${menuX}px` }">
         <slot></slot>
     </div>
 </template>

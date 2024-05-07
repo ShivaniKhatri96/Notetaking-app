@@ -106,7 +106,6 @@ watchEffect(() => {
     display: block;
     margin: auto;
     width: 20rem;
-
 }
 
 .log-in-form {
