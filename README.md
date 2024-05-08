@@ -14,7 +14,6 @@
 ### Currently working on
 
 - Allow a note's creator to make it private
- > The idea is to show the private notes in `MyNotesView` page
 
 ### Next I will work on
 
