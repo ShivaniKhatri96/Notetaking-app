@@ -80,7 +80,8 @@ const handleEditMode = (noteId) => {
                     </div>
                 </div>
             </div>
-            <div v-if="noteCreatorId === user?.userId" v-click-outside="outsideContextMenu" class="ellipsis-box">
+            <div v-if="noteCreatorId === user?.userId" v-click-outside="outsideContextMenu"
+                :class="`${showMenu ? 'ellipsis-box' : ''}`">
                 <div @click="handleContextMenu" class="ellipsis">
                     <font-awesome-icon :icon="['fas', 'ellipsis-v']" />
                 </div>

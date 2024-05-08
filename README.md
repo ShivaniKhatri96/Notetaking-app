@@ -75,6 +75,6 @@
 
 > `npm run dev`
 
-#### Accounts
-> There is no sign up option but you can log in using 3 different accounts:
-Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1
+#### Log in Accounts
+> You can log in using 3 different accounts:
+Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1 respectively

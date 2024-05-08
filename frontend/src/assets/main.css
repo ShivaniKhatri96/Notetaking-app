@@ -40,9 +40,6 @@
 .black-btn:hover {
   background-color: var(--background-color);
 }
-/* .red-btn {
-} */
-
 .loading-icon {
   font-size: 2.5rem;
   color: var(--light-gray);
