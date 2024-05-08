@@ -6,10 +6,10 @@
 
 - Navigation bar context menu (for large screens) issue fixed
 - Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
-- Navigation bar for mobile version
-- context menu added to note card to show options for editing, deleting and turn (note) private
-- Edit now happens inside a modal instead of in the note card itself
-- Make edit modal responsive
+- Navigation bar for mobile version is added
+- Context menu is now added to note card to show options for editing, deleting and turn (note) private
+- Edit now works inside a modal instead of 'in the note-card itself'
+- Edit modal is made responsive
 
 ### Currently working on
 
@@ -39,10 +39,10 @@
 ### Responsive Design
 
 - The website is responsive and it works on all devices
-  > I will improve the responsiveness in `version2` and make it even better.
   > Here, you can see examples for `small` and `large` screens
   >
-  > ![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png) > ![Home small screen](./frontend/public/readmeAssets/homeMobile.png) > ![welcome large screen](./frontend/public/readmeAssets/welcome.png) > ![Home large screen](./frontend/public/readmeAssets/home.png)
+  > ![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png) > ![Home small screen](./frontend/public/readmeAssets/homeMobile.png) 
+  > ![welcome large screen](./frontend/public/readmeAssets/welcome.png) > ![Home large screen](./frontend/public/readmeAssets/home.png)
 
 ### Functionalities
 
@@ -75,6 +75,10 @@
 
 > `npm run dev`
 
-#### Log in Accounts
-> You can log in using 3 different accounts:
-Harry, Ron and Hermione and their passwords are Harry1, Ron1 and Hermione1 respectively
+#### Log in via these Accounts
+> You can log in using 3 different accounts to test the project:
+`Username` : `password`
+`Harry` : `Harry1`
+`Ron` : `Ron1`
+`Hermione` : `Hermione1`
+
