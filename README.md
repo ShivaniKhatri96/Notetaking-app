@@ -77,8 +77,8 @@
 
 #### Log in via these Accounts
 You can log in using 3 different accounts to test the project:
-`Username` : `password`
-`Harry` : `Harry1`
-`Ron` : `Ron1`
-`Hermione` : `Hermione1`
+- `Username` : `password`
+- `Harry` : `Harry1`
+- `Ron` : `Ron1`
+- `Hermione` : `Hermione1`
 
