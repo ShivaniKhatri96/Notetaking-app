@@ -20,6 +20,10 @@ export const useNotesStore = defineStore('allNotes', {
       const updateNote = this.notes[0].find((note) => note._id === noteId)
       updateNote.title = noteTitle;
       updateNote.content = noteContent;
+    },
+    updateNotePrivacy(noteId, notePrivacy) {
+      const updateNote = this.notes[0].find((note) => note._id === noteId)
+      updateNote.privacy = notePrivacy;
     }
   }
 })

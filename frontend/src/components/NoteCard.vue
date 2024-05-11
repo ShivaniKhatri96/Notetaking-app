@@ -25,10 +25,14 @@ const props = defineProps({
     content: {
         type: String,
         required: true,
+    },
+    privacy: {
+        type: Boolean,
+        required: true,
     }
 })
 const { token, user } = useAuthStore();
-const { removeNotes } = useNotesStore();
+const { removeNotes, updateNotePrivacy } = useNotesStore();
 const store = useStore();
 const showMenu = ref(false);
 const menuX = ref(0);
@@ -66,6 +70,28 @@ const handleEditMode = (noteId) => {
     showMenu.value = false;
     store.editMode = noteId
 }
+
+const handlePrivacy = async (noteId) => {
+    const privacy = !props.privacy;
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", token);
+    try {
+        const response = await fetch(`http://localhost:8000/api/notes/${noteId}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                privacy
+            }),
+            headers: myHeaders,
+        })
+        if (response.ok) {
+            updateNotePrivacy(noteId, privacy);
+            showMenu.value = false
+        }
+    } catch (error) {
+        console.log('error', error);
+    }
+}
 </script>
 <template>
     <div class="card">
@@ -88,7 +114,7 @@ const handleEditMode = (noteId) => {
                 <ContextMenu :showMenu="showMenu" :menuX="menuX" :menuY="menuY">
                     <div class="context-menu-item" @click="handleDeleteNote(noteId)">Delete note</div>
                     <div class="context-menu-item" @click="handleEditMode(noteId)">Edit note</div>
-                    <div class="context-menu-item">Turn private</div>
+                    <div class="context-menu-item" @click="handlePrivacy(noteId)">{{ privacy ? 'Turn public' : 'Turn private'}}</div>
                 </ContextMenu>
             </div>
             <EditNoteCard :noteId="noteId" :title="title" :content="content" />
