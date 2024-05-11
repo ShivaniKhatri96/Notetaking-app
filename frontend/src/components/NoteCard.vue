@@ -102,7 +102,7 @@ const handlePrivacy = async (noteId) => {
                 <div class="note-creator">
                     <div class="note-creator-name">{{ noteCreator }}</div>
                     <div :class="`public-box ${noteCreatorId === user?.userId ? 'current-user' : ''}`">
-                        <font-awesome-icon :icon="['fas', 'user-group']" /> . Public Note
+                        <font-awesome-icon :icon="['fas', 'user-group']" /> . {{ privacy ? 'Private' : 'Public'}} Note
                     </div>
                 </div>
             </div>
