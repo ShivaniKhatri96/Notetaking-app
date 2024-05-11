@@ -43,8 +43,7 @@ const extractToken = (authHeader) => {
   } else if (authHeader.length > 0) {
     // Handle the case where the header doesn't start with "Bearer"
     return authHeader;
-  }
-  else {
+  } else {
     // Handle the case where header isn't present
     return null;
   }
@@ -122,10 +121,10 @@ app.get("/api/me", authenticateToken, async (req, res) => {
 // Create a new note for a user
 app.post("/api/notes", authenticateToken, async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, privacy } = req.body;
     // getting the user ID from 'req'
     const userId = req.user.userId;
-    const newNote = new Note({ title, content, user: userId });
+    const newNote = new Note({ title, content, privacy, user: userId });
     await newNote.save();
     res.status(201).json(newNote);
   } catch (error) {
@@ -146,7 +145,7 @@ app.get("/api/usernotes", authenticateToken, async (req, res) => {
 });
 
 // Get all notes
-app.get("/api/notes",authenticateToken, async (req, res) => {
+app.get("/api/notes", authenticateToken, async (req, res) => {
   try {
     const notes = await Note.find({});
     res.status(200).json(notes);
@@ -184,11 +183,11 @@ app.put("/api/notes/:id", authenticateToken, async (req, res) => {
   try {
     const userId = req.user.userId;
     const noteId = req.params.id;
-    const { title, content } = req.body;
+    const { title, content, privacy } = req.body;
     // Updating the note if it belongs to the user (note's owner)
     const updatedNote = await Note.findOneAndUpdate(
       { _id: noteId, user: userId },
-      { title, content },
+      { title, content, privacy },
       // this ensures that updated document is returned
       { new: true }
     );

@@ -9,7 +9,8 @@ const isCreatingNote = ref(false);
 
 const createNote = ref({
     title: '',
-    content: ''
+    content: '',
+    privacy: false
 })
 const handleClick = () => {
     isCreatingNote.value = true;
@@ -23,7 +24,7 @@ const handleClickOutside = () => {
 }
 
 const handleCreateNote = async () => {
-    const { title, content } = createNote.value;
+    const { title, content, privacy } = createNote.value;
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", authStore.token);
@@ -35,6 +36,7 @@ const handleCreateNote = async () => {
                 body: JSON.stringify({
                     title,
                     content,
+                    privacy
                 }),
                 headers: myHeaders,
             }
