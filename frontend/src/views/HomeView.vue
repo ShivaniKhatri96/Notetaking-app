@@ -24,7 +24,9 @@ onMounted(async () => {
       });
       if (response.ok) {
         const data = await response.json();
-        setNotes(data)
+        //showing the latest created note first
+        const reversedData = data.reverse();
+        setNotes(reversedData)
         isNotesLoading.value = false;
       }
     } catch (error) {

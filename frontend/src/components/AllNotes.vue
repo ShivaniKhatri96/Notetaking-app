@@ -3,8 +3,7 @@ import NoteCard from '../components/NoteCard.vue';
 import { useNotesStore } from '@/stores/notesStore';
 import { ref, onMounted } from "vue";
 
-const { notes, setNotes } = useNotesStore();
-
+const { notes } = useNotesStore();
 let noteCreators = ref([]);
 onMounted(async () => {
     try {
