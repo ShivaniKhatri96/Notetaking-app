@@ -10,10 +10,8 @@
 - Context menu is now added to note card to show options for editing, deleting and turn (note) private
 - Edit now works inside a modal instead of 'in the note-card itself'
 - Edit modal is made responsive
-
-### Currently working on
-
 - Allow a note's creator to make it private
+- MyNotes page now shows notes created by the logged in user
 
 ### Next I will work on
 
