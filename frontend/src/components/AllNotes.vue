@@ -18,26 +18,17 @@ onMounted(async () => {
         console.log('error', error);
     }
 })
-console.log(notes[0])
 </script>
 <template>
-    <div class="all-cards">
-        <!-- <NoteCard v-for="note in notes[0]?.filter(el => el.user === authStore.user?.userId)" :key="note._id" :noteId="note._id"
-            :noteCreator="noteCreators[0]?.find(el => el._id === note.user)?.username || ''" :noteCreatorId="note.user"
-            :title="note?.title" :content="note.content" :privacy="note.privacy" /> -->
-
-        <!-- only public notes are shown in home page. However, currently logged in user gets to see their private notes as well -->
-        <NoteCard v-for="note in notes[0]?.filter(el => el.privacy === false || el.user === authStore.user?.userId)"
-            :key="note._id" :noteId="note._id"
-            :noteCreator="noteCreators[0]?.find(el => el._id === note.user)?.username || ''" :noteCreatorId="note.user"
-            :title="note?.title" :content="note.content" :privacy="note.privacy" />
+    <div class="all-cards-box">
+        <p class="all-cards-title">Shared Notes</p>
+        <div class="all-cards">
+            <!-- only public notes are shown in home page. However, currently logged in user gets to see their private notes as well -->
+            <NoteCard v-for="note in notes[0]?.filter(el => el.privacy === false || el.user === authStore.user?.userId)"
+                :key="note._id" :noteId="note._id"
+                :noteCreator="noteCreators[0]?.find(el => el._id === note.user)?.username || ''"
+                :noteCreatorId="note.user" :title="note?.title" :content="note.content" :privacy="note.privacy" />
+        </div>
     </div>
+
 </template>
-<style scoped>
-.all-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
-    gap: 1rem;
-    justify-content: center;
-}
-</style>
