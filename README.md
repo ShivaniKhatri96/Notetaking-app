@@ -2,19 +2,7 @@
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
 
-### Recent updates
-
-- Navigation bar context menu (for large screens) issue fixed
-- Navigation image logo now has animation on hover to make it clear that you can click and go back to home page
-- Navigation bar for mobile version is added
-- Context menu is now added to note card to show options for editing, deleting and turn (note) private
-- Edit now works inside a modal instead of 'in the note-card itself'
-- Edit modal is made responsive
-- Allow a note's creator to make it private
-- MyNotes page now shows notes created by the logged in user
-
 ### Next I will work on
-
 - Be accessible from a public url
 
 ### Tools used
@@ -49,6 +37,7 @@
 - Created notes are saved and retrieved on next visit
 - It shows which user created a note
 - It allows only note's creator to edit and delete it
+- A note's creator is also allowed to make their note private which means other users can't see it
 
 ### Links used
 
@@ -57,10 +46,6 @@
 - [font awesome](https://fontawesome.com/) used for icons
 - [Microsoft copilot](https://copilot.microsoft.com/) used to generate animated drawings
 - [animista](https://animista.net/), CSS animations library, used for animations
-
-### Final Notes
-
-> It was really fun working on this project. Even though the final design is my own, I did took a lot of inspiration from [Google keep](https://keep.google.com/), [Dribbble](https://dribbble.com/) and [Facebook Posts](https://www.facebook.com/).
 
 ### Opening/ Running the file
 
@@ -76,7 +61,13 @@
 You can log in using 3 different accounts to test the project:
 | Username | Password |
 |-----------------|-----------------|
-| `Harry` | `Harry1` |
-| `Ron` | `Ron1` |
 | `Hermione` | `Hermione1` |
+| `Ron` | `Ron1` |
+| `Harry` | `Harry1` |
+
+
+### Final Notes
+
+> There are some notes already created in Hermione's and Ron's account but I have intentionally left Harry's account empty to show the difference. 
+> It was really fun working on this project. Even though the final design is my own, I did took a lot of inspiration from [Google keep](https://keep.google.com/), [Dribbble](https://dribbble.com/) and [Facebook Posts](https://www.facebook.com/).
 
