@@ -32,11 +32,12 @@ onMounted(async () => {
     }
   }
 })
+
 </script>
 <template>
   <div class="notes-page">
     <Loading v-if="isMyNotesLoading" />
-    <NoDataMessage v-else-if="!notes[0]?.length" message="You haven't created notes yet" />
+    <NoDataMessage v-else-if="!notes[0]?.filter(el => el.user === authStore.user?.userId)?.length" message="You haven't created notes yet" />
     <MyNotes v-else />
   </div>
 </template>
