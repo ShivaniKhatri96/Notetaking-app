@@ -10,8 +10,7 @@ defineProps({
     <div class="no-data-wrapper">
         <img alt="Image shown to represent no notes are present" class="chilling-girl"
             src="@/assets/girlChilling.png" />
-            <p class="message-style"> {{ message }}</p>
-        <!-- <p class="message-style"> {{ message }}. Create a new note to display here</p> -->
+        <p class="message-style"> {{ message }}. Create a new note to display here</p>
     </div>
 </template>
 <style scoped>

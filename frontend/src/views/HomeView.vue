@@ -24,7 +24,9 @@ onMounted(async () => {
       });
       if (response.ok) {
         const data = await response.json();
-        setNotes(data)
+        //showing the latest created note first
+        const reversedData = data.reverse();
+        setNotes(reversedData)
         isNotesLoading.value = false;
       }
     } catch (error) {
@@ -35,20 +37,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="home">
+  <main class="notes-page">
     <NoteCreation />
     <Loading v-if="isNotesLoading" />
-    <NoDataMessage v-else-if="!notes[0]?.length" message="No notes are currently available. . Create a new note to display here" />
+    <NoDataMessage v-else-if="!notes[0]?.length" message="No notes are currently available" />
     <AllNotes v-else />
   </main>
 </template>
-<style scoped>
-.home {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  padding: 2rem;
-  height: calc(100vh - var(--navbar-height));
-  overflow: auto;
-}
-</style>
+
