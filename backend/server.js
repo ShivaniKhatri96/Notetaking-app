@@ -3,6 +3,7 @@ const express = require("express");
 //cors: Cross-Origin Resource Sharing (CORS) using the `cors` middleware
 // It allows or restricts cross-origin HTTP requests
 const cors = require("cors");
+const path = require("path");
 const mongoose = require("mongoose");
 //Body-parser is a middleware for Express.js that simplifies handling of HTTP request bodies
 const bodyParser = require("body-parser");
@@ -19,6 +20,7 @@ const SECRET_KEY = "notetaking_app_key";
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, '../frontend/public/dist')));
 
 // MongoDB connection
 // I haven't hidden password because it's a free account. Also, I do not want to spend too much time on backend :)
