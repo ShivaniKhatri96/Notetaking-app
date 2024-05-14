@@ -10,7 +10,7 @@
         "use": "@vercel/static",
         "config": {
             "env": {
-              "BASE_URL": "https://notetaking-app-zeta.vercel.app/api"
+              "BASE_URL": "https://notetaking-app-zeta.vercel.app"
             }
           }
       }
