@@ -19,7 +19,8 @@ const handleSubmit = async () => {
     const { username, password } = user.value;
     try {
         const response = await fetch(
-            "http://localhost:8000/api/login",
+            "api/login",
+            // "http://localhost:8000/api/login",
             {
                 method: "POST",
                 body: JSON.stringify({
