@@ -65,9 +65,6 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Define routes
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-});
 // Create a new user
 app.post("/api/users", async (req, res) => {
   try {
