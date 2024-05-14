@@ -21,6 +21,9 @@ const SECRET_KEY = "notetaking_app_key";
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 
 // MongoDB connection
 // I haven't hidden password because it's a free account. Also, I do not want to spend too much time on backend :)
