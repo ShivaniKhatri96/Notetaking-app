@@ -7,7 +7,12 @@
       },
       {
         "src": "frontend/dist/**/*",
-        "use": "@vercel/static"
+        "use": "@vercel/static",
+        "config": {
+            "env": {
+              "BASE_URL": "https://notetaking-app-zeta.vercel.app/api"
+            }
+          }
       }
     ],
     "routes": [
@@ -19,9 +24,6 @@
         "src": "/(.*)",
         "dest": "/frontend/dist/$1"
       }
-    ],
-    "env": {
-        "BASE_URL": "https://notetaking-app-zeta.vercel.app/api"
-      }
+    ]
   }
   
