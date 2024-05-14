@@ -3,6 +3,7 @@ import { ref, watch, watchEffect } from 'vue';
 import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
+import { API_BASE_URL } from './config';
 
 const router = useRouter();
 const store = useStore();
@@ -19,7 +20,7 @@ const handleSubmit = async () => {
     const { username, password } = user.value;
     try {
         const response = await fetch(
-            "/api/login",
+            `${API_BASE_URL}/login`,
             // "http://localhost:8000/api/login",
             {
                 method: "POST",
