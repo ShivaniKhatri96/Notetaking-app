@@ -20,7 +20,7 @@ const handleSubmit = async () => {
     const { username, password } = user.value;
     try {
         const response = await fetch(
-            `${import.meta.env.BASE_URL}/login`,
+            `${process.env.BASE_URL}/login`,
             // "http://localhost:8000/api/login",
             {
                 method: "POST",
