@@ -15,14 +15,12 @@ const user = ref({
 })
 
 const errorMessage = ref("");
-const baseUrl = import.meta.env.VITE_BASE_URL;
-console.log('env', baseUrl)
 const handleSubmit = async () => {
     const { username, password } = user.value;
     try {
         const response = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/login`,
-            // "http://localhost:8000/api/login",
+            // `${import.meta.env.VITE_BASE_URL}/login`,
+            "http://localhost:8000/api/login",
             {
                 method: "POST",
                 body: JSON.stringify({

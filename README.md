@@ -2,8 +2,6 @@
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
 
-### Next I will work on
-- Be accessible from a public url
 
 ### Tools used
 
@@ -38,6 +36,9 @@
 - It shows which user created a note
 - It allows only note's creator to edit and delete it
 - A note's creator is also allowed to make their note private which means other users can't see it
+
+### Future Goal
+- Be accessible from a public url by deploying. Right now only accessible using localhost
 
 ### Links used
 
