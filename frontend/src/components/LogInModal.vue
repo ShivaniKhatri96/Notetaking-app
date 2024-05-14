@@ -3,7 +3,7 @@ import { ref, watch, watchEffect } from 'vue';
 import { useStore } from '@/stores/store';
 import { useAuthStore } from '@/stores/auth';
 import { useRouter } from 'vue-router';
-import { API_BASE_URL } from './config';
+import { API_BASE_URL } from '../config.js';
 
 const router = useRouter();
 const store = useStore();
