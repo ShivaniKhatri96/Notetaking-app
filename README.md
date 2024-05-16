@@ -2,6 +2,8 @@
 
 > Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
 
+https://github.com/ShivaniKhatri96/Notetaking-app/assets/48630686/c320e705-f3f1-4d20-a275-eca22d66a09f
+
 
 ### Tools used
 
