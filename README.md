@@ -1,6 +1,6 @@
 # Noteworthy: A Notetaking-app
 
-> Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. Note is shared among all the users. However, only the note's creator can edit and delete it.
+> Ready to embark on a note-taking journey? Create `noteworthy notes` with `Noteworthy`. The note is shared among all the users. However, only the note's creator can edit, delete, or make the note private.
 
 
 
@@ -28,7 +28,7 @@ https://github.com/ShivaniKhatri96/Notetaking-app/assets/48630686/f66bc6c8-77c2-
 ### Responsive Design
 
 - The website is responsive and it works on all devices
-  > Here, you can see examples for `small` and `large` screens
+  > Here, you can see examples of `small` and `large` screens
   >
   > ![welcome small screen](./frontend/public/readmeAssets/welcomeMobile.png) > ![Home small screen](./frontend/public/readmeAssets/homeMobile.png) 
   > ![welcome large screen](./frontend/public/readmeAssets/welcome.png) > ![Home large screen](./frontend/public/readmeAssets/home.png)
@@ -36,15 +36,15 @@ https://github.com/ShivaniKhatri96/Notetaking-app/assets/48630686/f66bc6c8-77c2-
 ### Functionalities
 
 - Requires a login to access
-- It allows for more than one user. Each user have a username and an individual password
+- It allows for more than one user. Each user has a username and an individual password
 - The app allows the user to create and read notes
-- Created notes are saved and retrieved on next visit
+- Created notes are saved and retrieved on the next visit
 - It shows which user created a note
-- It allows only note's creator to edit and delete it
+- It allows only the note's creator to edit and delete it
 - A note's creator is also allowed to make their note private which means other users can't see it
 
 ### Future Goal
-- Be accessible from a public url by deploying. Right now only accessible using localhost
+- Be accessible from a public URL by deploying. Right now only accessible using localhost
 
 ### Links used
 
@@ -75,6 +75,6 @@ You can log in using 3 different accounts to test the project:
 
 ### Final Notes
 
-> There are some notes already created in Hermione's and Ron's account but I have intentionally left Harry's account empty to show the difference. 
-> It was really fun working on this project. Even though the final design is my own, I did took a lot of inspiration from [Google keep](https://keep.google.com/), [Dribbble](https://dribbble.com/) and [Facebook Posts](https://www.facebook.com/).
+> There are some notes already created in Hermione's and Ron's accounts but I have intentionally left Harry's account empty to show the difference. 
+> It was really fun working on this project. Even though the final design is my own, I took a lot of inspiration from [Google keep](https://keep.google.com/), [Dribbble](https://dribbble.com/) and [Facebook Posts](https://www.facebook.com/).
 
