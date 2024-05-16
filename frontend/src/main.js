@@ -21,7 +21,8 @@ import {
   faTrashCan,
   faFloppyDisk,
   faUser,
-  faRightFromBracket
+  faRightFromBracket,
+  faLock
 } from '@fortawesome/free-solid-svg-icons'
 // import {} from '@fortawesome/free-regular-svg-icons'
 
@@ -37,7 +38,8 @@ library.add(
   faTrashCan,
   faFloppyDisk,
   faUser,
-  faRightFromBracket
+  faRightFromBracket,
+  faLock
 )
 
 const app = createApp(App)
